@@ -32,19 +32,18 @@ In the below example the player moved first, and both players simply kept piling
 
 ## Algorithms and Data Structures
 
-The main focus of this project will be developing the minimax-algorithm, and improving with alpha-beta pruning. These algorithms will treat game states as nodes in a tree, with edges between one game state and another reached with one move. The root node is the game's current state at the time of the algorithm's execution.
+The main focus of this project will be developing a  minimax-algorithm, and improving it with alpha-beta pruning. These algorithms will treat game states as nodes in a tree, with edges between one game state and another reached with one move. The root node is the game's current state at the time of the algorithm's execution.
 
 The program will use a transposition table to store information on how various moves affect the game state and speed up the algorithm. We may possibly use hash tables or Zobrist hashing to implement the transposition table depending on if we want to keep track of previous moves made during the game.
 
 ## Target Time and Space Complexities
 
+According to the course material, minimax-algorithm has a time complexity of $O^n$, where $O$ is the amount of available moves in a game situation, and $n$ is the depth of moves the algorithm looks ahead to. Since we use 7 columns in our game of Connect 4, there are always 7 options for a player to drop a piece, barring any filled columns. This means that worst case time-complexity for our minimax algorithm will be $O(7^n)$, where $n$ is the amount of moves our algorithm looks ahead.
 
+However, we will be enhancing the algorithm with alpha-beta pruning, which if implemented correctly should reduce the runtime to $O(7^{n/2})$. Therefore the time complexity remains exponential, but enables an increased depth of 1-2 moves further than with pure minimax.
 
-### Time complexity
+As the minimax-algorithm will use iterative deepening depth-first search for each branch, and according to wikipedia IDDFS has a space complexity of $O(d)$, where $d$ is the depth of the search and $b$ is the amount of branches to search at each node, our target space complexity is $O(bd)$. Our AI will have 7 moves to evaluate most of the time, so the target space complexity can be represented as $O(7d)$.
 
-According to the course material, minimax-algorithm has a time complexity of $O^n$, where $O$ is the amount of available moves in a game situation, and $n$ is the depth of moves the algorithm looks ahead to. Since we use 7 columns in our game of Connect 4, there are always 7 options for a player to drop a piece, barring any filled columns. This means that worst case time-complexity for our minimax algorithm will be $7^n$, where $n$ is the amount of moves our algorithm looks ahead.
-
-However, we will be enhancing the algorithm with alpha-beta pruning, which if implemented correctly should reduce the runtime to $\sqrt{7^n}$. Therefore the time complexity remains exponential ($O^n$), but enables an increased depth of 1-2 moves further than with pure minimax.
 
 
 ## Sources:
@@ -53,3 +52,4 @@ However, we will be enhancing the algorithm with alpha-beta pruning, which if im
 * Wikipedia articles:
     * https://en.wikipedia.org/wiki/Minimax
     * https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
+    * https://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search
