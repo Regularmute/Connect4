@@ -23,12 +23,12 @@ The game board will be visually represented in the console through ASCII and upd
 In the below example the player moved first, and both players simply kept piling their piece on top of their previous one:
 
 ```
-.......
-.......
-...X...
-...XO..
-...XO..
-...XO..
+['.', '.', '.', '.', '.', '.', '.']
+['.', '.', '.', '.', '.', '.', '.']
+['.', '.', '.', 'X', '.', '.', '.']
+['.', '.', '.', 'X', 'O', '.', '.']
+['.', '.', '.', 'X', 'O', '.', '.']
+['.', '.', '.', 'X', 'O', '.', '.']
 ```
 
 
