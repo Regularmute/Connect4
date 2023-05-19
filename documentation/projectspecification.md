@@ -8,12 +8,14 @@ We will attempt to develop the algorithm with iterative deepening depth-first-se
 
 The project will be written in Python, and documentation will be written in English for consistency.
 
-The developer is participating in Helsinki University's Computer Science degree (Tietojenkäsittelytieteen Kandiohjelma).
+The developer is participating in Helsinki University's Computer Science degree (Tietojenkäsittelytieteen Kandiohjelma, TKT).
 
 ## Inputs and outputs
 
 ### Input:
-The player will be prompted to enter their move in the console, possibly as coordinates. Another possibility is to provide the player with the option of selecting the difficulty of AI, which would increase or decrease the depth of the minimax algorithm.
+On their turns, the player will be prompted to enter their move in the console, possibly as a number matching the column where the piece will be droppes. The game board is then updated by switching the lowest tile in the input column from an empty space (".") to the player piece ("X").
+
+Another possibility is to provide the player with the option of selecting the difficulty of AI when starting a game, which would increase or decrease the depth of the minimax algorithm.
 
 ### Output:
 The game board will be visually represented in the console through ASCII and updated after every move. The board is displayed as 6 rows with 7 characters each, where "." stands for an empty space, "X" stands for a space occupied by the player's piece and "O" stands for a space occupied by the AI's piece.
