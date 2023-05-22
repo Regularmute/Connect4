@@ -52,7 +52,11 @@ class Connect4Game:
             self.running = False
 
     def check_win(self, piece_row=5, piece_column=0):
-        """Checks if the game has been won.
+        """Checks if the game has been won around a piece.
+
+        Args:
+            piece_row(int): The row number of the last piece dropped.
+            piece_column(int): The column number of the last piece dropped.
 
         Returns:
             True if the game has been won, False if not.
