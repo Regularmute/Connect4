@@ -41,6 +41,61 @@ class Connect4Game:
             else:
                 continue
 
+        if self.check_win():
+            self.print_grid()
+            if player:
+                print("You win!")
+            else:
+                print("You lose!")
+            self.running = False
+
+    def check_win(self):
+        """Checks if the game has been won.
+
+        Returns:
+            True if the game has been won, False if not.
+        """
+        for row in range(6):
+            for column in range(7):
+                if self.game_grid[row][column] != ".":
+                    try:
+                        if (self.game_grid[row][column]
+                            == self.game_grid[row][column+1]
+                            == self.game_grid[row][column+2]
+                            == self.game_grid[row][column+3]
+                        ):
+                            return True
+                    except IndexError:
+                        pass
+                    try:
+                        if (self.game_grid[row][column]
+                            == self.game_grid[row+1][column]
+                            == self.game_grid[row+2][column]
+                            == self.game_grid[row+3][column]
+                        ):
+                            return True
+                    except IndexError:
+                        pass
+                    try:
+                        if (self.game_grid[row][column]
+                            == self.game_grid[row+1][column+1]
+                            == self.game_grid[row+2][column+2]
+                            == self.game_grid[row+3][column+3]
+                        ):
+                            return True
+                    except IndexError:
+                        pass
+                    try:
+                        if (self.game_grid[row][column]
+                            == self.game_grid[row+1][column-1]
+                            == self.game_grid[row+2][column-2]
+                            == self.game_grid[row+3][column-3]
+                        ):
+                            return True
+                    except IndexError:
+                        continue
+        return False
+
     def ask_for_input(self):
         """Prompts the user for a column number to drop a piece in.
 
