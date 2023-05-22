@@ -8,7 +8,7 @@ class Connect4Game:
             print(row)
     
     def update_grid(self, column, player):
-        if player == "player":
+        if player:
             piece = "X"
         else:
             piece = "O"
@@ -31,7 +31,7 @@ class Connect4Game:
             elif column == -1:
                 self.running = False
             else:
-                self.update_grid(column, "player")
+                self.update_grid(column, True)
         except ValueError:
             print("Invalid column number, please try again.")
 
