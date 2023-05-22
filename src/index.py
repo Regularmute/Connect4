@@ -37,11 +37,13 @@ class Connect4Game:
         for row in range(5, -1, -1):
             if self.game_grid[row][column] == ".":
                 self.game_grid[row][column] = piece
+                piece_row = row
+                piece_column = column
                 break
             else:
                 continue
 
-        if self.check_win():
+        if self.check_win(piece_row, piece_column):
             self.print_grid()
             if player:
                 print("You win!")
@@ -49,14 +51,18 @@ class Connect4Game:
                 print("You lose!")
             self.running = False
 
-    def check_win(self):
+    def check_win(self, piece_row=5, piece_column=0):
         """Checks if the game has been won.
 
         Returns:
             True if the game has been won, False if not.
         """
-        for row in range(6):
-            for column in range(7):
+        for row in range(piece_row-3, piece_row+4):
+            if row < 0 or row > 5:
+                continue
+            for column in range(piece_column-3, piece_column+4):
+                if column < 0 or column > 6:
+                    continue
                 if self.game_grid[row][column] != ".":
                     try:
                         if (self.game_grid[row][column]
