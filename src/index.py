@@ -24,9 +24,7 @@ class Connect4Game:
         print("Please enter a column number (1-7): ")
         try:
             column = int(input()) - 1
-            if column < 0 or column > 6:
-                print("Invalid column number, please try again.")
-            elif self.game_grid[0][column] != ".":
+            if self.game_grid[0][column] != ".":
                 print("Column is full, please choose another.")
             elif column == -1:
                 self.running = False
@@ -34,6 +32,8 @@ class Connect4Game:
                 self.update_grid(column, True)
         except ValueError:
             print("Invalid column number, please try again.")
+        except IndexError:
+            print("Column number must be between 0-6. Please try again.")
 
 
 if __name__ == "__main__":
