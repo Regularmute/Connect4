@@ -22,17 +22,19 @@ class Connect4Game:
 
     def ask_for_input(self):
         print("Please enter a column number (1-7): ")
-        column = int(input()) - 1
-        if column < 0 or column > 6:
+        try:
+            column = int(input()) - 1
+            if column < 0 or column > 6:
+                print("Invalid column number, please try again.")
+            elif self.game_grid[0][column] != ".":
+                print("Column is full, please choose another.")
+            elif column == -1:
+                self.running = False
+            else:
+                self.update_grid(column, "player")
+        except ValueError:
             print("Invalid column number, please try again.")
-            self.ask_for_input()
-        if self.game_grid[0][column] != ".":
-            print("Column is full, please choose another.")
-            self.ask_for_input()
-        if column == -1:
-            self.running = False
-        else:
-            self.update_grid(column, "player")
+
 
 if __name__ == "__main__":
     game = Connect4Game()
