@@ -121,3 +121,115 @@ class TestConsoleGui(unittest.TestCase):
         game.print_grid()
         sys.stdout = sys.__stdout__
         self.assertEqual(output.getvalue(), expected_output)
+
+    def test_check_win_returns_false_for_empty_grid(self):
+        game = Connect4Game()
+
+        self.assertFalse(game.check_win())
+
+    def test_check_win_returns_true_for_horizontal_win(self):
+        game = Connect4Game()
+
+        game.update_grid(0, True)
+        game.update_grid(1, True)
+        game.update_grid(2, True)
+        game.update_grid(3, True)
+
+        self.assertTrue(game.check_win())
+
+    def test_check_win_returns_true_for_vertical_win(self):
+        game = Connect4Game()
+
+        game.update_grid(0, True)
+        game.update_grid(0, True)
+        game.update_grid(0, True)
+        game.update_grid(0, True)
+
+        self.assertTrue(game.check_win())
+
+    def test_check_win_returns_true_for_rising_diagonal_win(self):
+        game = Connect4Game()
+
+        game.update_grid(0, True)
+
+        game.update_grid(1, False)
+        game.update_grid(1, True)
+
+        game.update_grid(2, False)
+        game.update_grid(2, False)
+        game.update_grid(2, True)
+
+        game.update_grid(3, False)
+        game.update_grid(3, False)
+        game.update_grid(3, False)
+        game.update_grid(3, True)
+
+        self.assertTrue(game.check_win())
+
+    def test_check_win_returns_true_for_falling_diagonal_win(self):
+        game = Connect4Game()
+
+        game.update_grid(1, False)
+        game.update_grid(1, False)
+        game.update_grid(1, False)
+        game.update_grid(1, True)
+
+        game.update_grid(2, False)
+        game.update_grid(2, False)
+        game.update_grid(2, True)
+
+        game.update_grid(3, False)
+        game.update_grid(3, True)
+
+        game.update_grid(4, True)
+
+        self.assertTrue(game.check_win())
+
+    def test_check_win_returns_false_for_three_horizontal_pieces(self):
+        game = Connect4Game()
+
+        game.update_grid(0, True)
+        game.update_grid(1, True)
+        game.update_grid(2, True)
+
+        self.assertFalse(game.check_win())
+
+    def test_check_win_returns_false_for_three_vertical_pieces(self):
+        game = Connect4Game()
+
+        game.update_grid(0, True)
+        game.update_grid(0, True)
+        game.update_grid(0, True)
+
+        self.assertFalse(game.check_win())
+
+    def test_check_win_returns_false_for_three_rising_diagonal_pieces(self):
+        game = Connect4Game()
+
+        game.update_grid(0, True)
+
+        game.update_grid(1, False)
+        game.update_grid(1, True)
+
+        game.update_grid(2, False)
+        game.update_grid(2, False)
+        game.update_grid(2, True)
+
+        self.assertFalse(game.check_win())
+
+    def test_check_win_returns_false_for_three_falling_diagonal_pieces(self):
+        game = Connect4Game()
+
+        game.update_grid(1, False)
+        game.update_grid(1, False)
+        game.update_grid(1, False)
+        game.update_grid(1, True)
+
+        game.update_grid(2, False)
+        game.update_grid(2, False)
+        game.update_grid(2, True)
+
+        game.update_grid(3, False)
+        game.update_grid(3, True)
+
+        self.assertFalse(game.check_win())
