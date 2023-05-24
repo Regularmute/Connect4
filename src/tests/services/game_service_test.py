@@ -170,7 +170,7 @@ class TestGameService(unittest.TestCase):
 
         self.game_service.update_grid(4, True)
 
-        self.assertTrue(self.game_service.check_win_including_piece(0,4))
+        self.assertTrue(self.game_service.check_win_including_piece(5,4))
 
     def test_check_win_including_piece_returns_false_for_three_horizontal_pieces(self):
 
