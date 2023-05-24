@@ -37,7 +37,7 @@ class GameUI:
         except ValueError:
             print("Invalid column number, please try again.")
         except IndexError:
-            print("Column number must be between 0-6. Please try again.")
+            print("Column number must be between 1-7. Please try again.")
 
 
 if __name__ == "__main__":
