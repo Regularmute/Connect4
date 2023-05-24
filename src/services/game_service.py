@@ -58,49 +58,33 @@ class GameService:
         Returns:
             True if the game has been won, False if not.
         """
-        for row in range(piece_row-3, piece_row+4):
-            if row < 0 or row > 5:
-                continue
-            for column in range(piece_column-3, piece_column+4):
-                if column < 0 or column > 6:
-                    continue
-                if self.game_grid[row][column] != ".":
-                    try:
-                        if (self.game_grid[row][column]
-                            == self.game_grid[row][column+1]
-                            == self.game_grid[row][column+2]
-                            == self.game_grid[row][column+3]
-                        ):
-                            return True
-                    except IndexError:
-                        pass
-                    try:
-                        if (self.game_grid[row][column]
-                            == self.game_grid[row+1][column]
-                            == self.game_grid[row+2][column]
-                            == self.game_grid[row+3][column]
-                        ):
-                            return True
-                    except IndexError:
-                        pass
-                    try:
-                        if (self.game_grid[row][column]
-                            == self.game_grid[row+1][column+1]
-                            == self.game_grid[row+2][column+2]
-                            == self.game_grid[row+3][column+3]
-                        ):
-                            return True
-                    except IndexError:
-                        pass
-                    try:
-                        if (self.game_grid[row][column]
-                            == self.game_grid[row+1][column-1]
-                            == self.game_grid[row+2][column-2]
-                            == self.game_grid[row+3][column-3]
-                        ):
-                            return True
-                    except IndexError:
-                        continue
+
+        new_piece = self.game_grid[piece_row][piece_column]
+
+        if new_piece == ".":
+            return False
+
+        # Check vertical connections
+        if piece_row < 3:
+            if all(self.game_grid[piece_row+i][piece_column] == new_piece for i in range(4)):
+                return True
+
+        # Check horizontal connections
+        for column in range(max(0, piece_column-3), min(3, piece_column+1)):
+            if all(self.game_grid[piece_row][column+i] == new_piece for i in range(4)):
+                return True
+
+        # Check falling diagonal connections
+        for row in range(max(0, piece_row-3), min(3, piece_row+1)):
+            for column in range(max(0,piece_column-3), min(3, piece_column+1)):
+                if all(self.game_grid[row+i][column+i] == new_piece for i in range(4)):
+                    return True
+
+        # Check rising diagonal connections
+        for row in range(min(5, piece_row+3), piece_row-1, -1):
+            for column in range(max(0,piece_column-3), min(3, piece_column+1)):
+                if all(self.game_grid[row-i][column+i] == new_piece for i in range(4)):
+                    return True
         return False
 
 game_service = GameService()
