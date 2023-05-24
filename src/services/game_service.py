@@ -39,7 +39,7 @@ class GameService:
                 self.game_grid[row][column] = piece
                 piece_row = row
                 piece_column = column
-                if self.check_win(piece_row, piece_column):
+                if self.check_win_including_piece(piece_row, piece_column):
                     self.print_grid()
                     if player:
                         print("You win!")
@@ -47,12 +47,9 @@ class GameService:
                         print("You lose!")
                     self.running = False
                 break
-            else:
-                continue
 
-
-    def check_win(self, piece_row=5, piece_column=0):
-        """Checks if the game has been won around a piece.
+    def check_win_including_piece(self, piece_row=5, piece_column=0):
+        """Checks if the game has been won with a piece.
 
         Args:
             piece_row(int): The row number of the last piece dropped.

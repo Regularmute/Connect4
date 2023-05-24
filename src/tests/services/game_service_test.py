@@ -114,29 +114,29 @@ class TestGameService(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(output.getvalue(), expected_output)
 
-    def test_check_win_returns_false_for_empty_grid(self):
+    def test_check_win_including_piece_returns_false_for_empty_grid(self):
 
-        self.assertFalse(self.game_service.check_win())
+        self.assertFalse(self.game_service.check_win_including_piece())
 
-    def test_check_win_returns_true_for_horizontal_win(self):
+    def test_check_win_including_piece_returns_true_for_horizontal_win(self):
 
         self.game_service.update_grid(0, True)
         self.game_service.update_grid(1, True)
         self.game_service.update_grid(2, True)
         self.game_service.update_grid(3, True)
 
-        self.assertTrue(self.game_service.check_win(5,3))
+        self.assertTrue(self.game_service.check_win_including_piece(5,3))
 
-    def test_check_win_returns_true_for_vertical_win(self):
+    def test_check_win_including_piece_returns_true_for_vertical_win(self):
 
         self.game_service.update_grid(0, True)
         self.game_service.update_grid(0, True)
         self.game_service.update_grid(0, True)
         self.game_service.update_grid(0, True)
 
-        self.assertTrue(self.game_service.check_win(2,0))
+        self.assertTrue(self.game_service.check_win_including_piece(2,0))
 
-    def test_check_win_returns_true_for_rising_diagonal_win(self):
+    def test_check_win_including_piece_returns_true_for_rising_diagonal_win(self):
 
         self.game_service.update_grid(0, True)
 
@@ -152,9 +152,9 @@ class TestGameService(unittest.TestCase):
         self.game_service.update_grid(3, False)
         self.game_service.update_grid(3, True)
 
-        self.assertTrue(self.game_service.check_win(2,3))
+        self.assertTrue(self.game_service.check_win_including_piece(2,3))
 
-    def test_check_win_returns_true_for_falling_diagonal_win(self):
+    def test_check_win_including_piece_returns_true_for_falling_diagonal_win(self):
 
         self.game_service.update_grid(1, False)
         self.game_service.update_grid(1, False)
@@ -170,25 +170,25 @@ class TestGameService(unittest.TestCase):
 
         self.game_service.update_grid(4, True)
 
-        self.assertTrue(self.game_service.check_win(0,4))
+        self.assertTrue(self.game_service.check_win_including_piece(0,4))
 
-    def test_check_win_returns_false_for_three_horizontal_pieces(self):
+    def test_check_win_including_piece_returns_false_for_three_horizontal_pieces(self):
 
         self.game_service.update_grid(0, True)
         self.game_service.update_grid(1, True)
         self.game_service.update_grid(2, True)
 
-        self.assertFalse(self.game_service.check_win(0,2))
+        self.assertFalse(self.game_service.check_win_including_piece(0,2))
 
-    def test_check_win_returns_false_for_three_vertical_pieces(self):
+    def test_check_win_including_piece_returns_false_for_three_vertical_pieces(self):
 
         self.game_service.update_grid(0, True)
         self.game_service.update_grid(0, True)
         self.game_service.update_grid(0, True)
 
-        self.assertFalse(self.game_service.check_win(2,0))
+        self.assertFalse(self.game_service.check_win_including_piece(2,0))
 
-    def test_check_win_returns_false_for_three_rising_diagonal_pieces(self):
+    def test_check_win_including_piece_returns_false_for_three_rising_diagonal_pieces(self):
 
         self.game_service.update_grid(0, True)
 
@@ -199,9 +199,9 @@ class TestGameService(unittest.TestCase):
         self.game_service.update_grid(2, False)
         self.game_service.update_grid(2, True)
 
-        self.assertFalse(self.game_service.check_win(3,2))
+        self.assertFalse(self.game_service.check_win_including_piece(3,2))
 
-    def test_check_win_returns_false_for_three_falling_diagonal_pieces(self):
+    def test_check_win_including_piece_returns_false_for_three_falling_diagonal_pieces(self):
 
         self.game_service.update_grid(1, False)
         self.game_service.update_grid(1, False)
@@ -215,4 +215,4 @@ class TestGameService(unittest.TestCase):
         self.game_service.update_grid(3, False)
         self.game_service.update_grid(3, True)
 
-        self.assertFalse(self.game_service.check_win(4,3))
+        self.assertFalse(self.game_service.check_win_including_piece(4,3))
