@@ -39,17 +39,17 @@ class GameService:
                 self.game_grid[row][column] = piece
                 piece_row = row
                 piece_column = column
+                if self.check_win(piece_row, piece_column):
+                    self.print_grid()
+                    if player:
+                        print("You win!")
+                    else:
+                        print("You lose!")
+                    self.running = False
                 break
             else:
                 continue
 
-        if self.check_win(piece_row, piece_column):
-            self.print_grid()
-            if player:
-                print("You win!")
-            else:
-                print("You lose!")
-            self.running = False
 
     def check_win(self, piece_row=5, piece_column=0):
         """Checks if the game has been won around a piece.
