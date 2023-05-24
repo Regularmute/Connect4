@@ -28,7 +28,9 @@ class GameUI:
         print("Please enter a column number (1-7): ")
         try:
             column = int(input()) - 1
-            if self.game_grid[0][column] != ".":
+            if column == -1:
+                print("Column number must be between 1-7. Please try again.")
+            elif self.game_grid[0][column] != ".":
                 print("Column is full, please choose another.")
             elif column == -1:
                 self.running = False
