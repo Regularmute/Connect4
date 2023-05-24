@@ -1,4 +1,12 @@
+"""Handles the impartial game logic."""
+
 class GameService:
+    """Represents the game logic in charge of tracking the current game state.
+    Attributes:
+            game_grid(list): A 2D list of 6 rows and 7 columns.
+            running(bool): True if the game is running,
+                False if the game is over.
+    """
     def __init__(self):
         """Initializes the game grid and sets the game to running.
 
@@ -7,18 +15,14 @@ class GameService:
             '.' = empty tile
             'X' = player piece (human)
             'O' = computer piece
-
-        Attributes:
-            game_grid(list): A 2D list of 6 rows and 7 columns.
-            running(bool): True if the game is running, False if the game is over.
         """
-        self.game_grid = [['.' for _ in range(7)] for _ in range(6)]  
-        self.running = True 
+        self.game_grid = [['.' for _ in range(7)] for _ in range(6)]
+        self.running = True
 
     def print_grid(self):
         for row in self.game_grid:
             print(row)
-    
+
     def update_grid(self, column, player):
         """Updates the grid with a piece dropped by a player.
 
