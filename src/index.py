@@ -12,7 +12,8 @@ class GameUI:
 
         Attributes:
             game_grid(list): A 2D list of 6 rows and 7 columns.
-            running(bool): True if the game is running, False if the game is over.
+            running(bool): True if the game is running, False if the game is
+                over.
         """
         self.game_grid = [['.' for _ in range(7)] for _ in range(6)]
         self.running = True
