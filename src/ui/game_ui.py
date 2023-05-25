@@ -23,6 +23,7 @@ class GameUI:
                 return column
             except ValueError:
                 print("Invalid input. Please enter a number between 1 and 7.")
+                continue
 
     def get_column_from_computer(self):
         """Gets the column number from the computer."""
