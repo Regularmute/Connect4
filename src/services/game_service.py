@@ -19,10 +19,6 @@ class GameService:
         self.game_grid = [['.' for _ in range(7)] for _ in range(6)]
         self.running = True
 
-    def print_grid(self):
-        for row in self.game_grid:
-            print(row)
-
     def update_grid(self, column, player):
         """Updates the grid with a piece dropped by a player.
 
@@ -44,7 +40,6 @@ class GameService:
                 piece_row = row
                 piece_column = column
                 if self.check_win_including_piece(piece_row, piece_column):
-                    self.print_grid()
                     if player:
                         print("You win!")
                     else:
@@ -102,5 +97,3 @@ class GameService:
                     == new_piece for i in range(4)):
                     return True
         return False
-
-game_service = GameService()
