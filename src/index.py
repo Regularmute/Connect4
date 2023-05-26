@@ -8,3 +8,5 @@ if __name__ == "__main__":
         game_UI.print_grid()
         column = game_UI.get_column_from_player()
         game_service.update_grid(column, True)
+        column = game_UI.get_column_from_computer()
+        game_service.update_grid(column, False)

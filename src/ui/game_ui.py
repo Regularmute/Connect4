@@ -27,4 +27,7 @@ class GameUI:
 
     def get_column_from_computer(self):
         """Gets the column number from the computer."""
-        return random.randint(0, 6)
+        column = random.randint(0, 6)
+        while self.game_service.game_grid[0][column] != ".":
+            column = random.randint(0, 6)
+        return column
