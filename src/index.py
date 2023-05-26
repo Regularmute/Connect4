@@ -12,3 +12,7 @@ if __name__ == "__main__":
         game_service.update_grid(game_service.game_grid, column, True)
         column = ai_service.choose_column()
         game_service.update_grid(game_service.game_grid, column, False)
+    print("Board at the end:")
+    print("#######################################")
+    game_UI.print_grid()
+    print("#######################################")
