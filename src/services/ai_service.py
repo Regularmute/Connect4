@@ -58,7 +58,7 @@ class Connect4AI:
             score(int): The score of the game state.
         """
 
-        AI_threats = 0
+        ai_threats = 0
         player_threats = 0
 
         for row in range(6):
@@ -79,18 +79,18 @@ class Connect4AI:
                 elif game_state[row][column] == "O":
                     if game_state[row][min(5,column + 1)] == "O" and \
                         game_state[row][min(6,column + 2)] == "O":
-                        AI_threats += 1
+                        ai_threats += 1
                     if game_state[min(4,row + 1)][column] == "O" and \
                         game_state[min(5,row + 2)][column] == "O":
-                        AI_threats += 1
+                        ai_threats += 1
                     if game_state[min(4,row + 1)][min(5,column + 1)] == "O" and \
                         game_state[min(5,row + 2)][min(6,column + 2)] == "O":
-                        AI_threats += 1
+                        ai_threats += 1
                     if game_state[min(4,row + 1)][max(1,column - 1)] == "O" and \
                         game_state[min(5,row + 2)][max(0,column - 2)] == "O":
-                        AI_threats += 1
+                        ai_threats += 1
 
-        score = AI_threats - player_threats
+        score = ai_threats - player_threats
 
         return score
 
