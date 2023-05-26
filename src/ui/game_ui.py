@@ -22,4 +22,3 @@ class GameUI:
             except ValueError:
                 print("Invalid input. Please enter a number between 1 and 7.")
                 continue
-
