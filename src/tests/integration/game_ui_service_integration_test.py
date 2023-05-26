@@ -59,7 +59,6 @@ class TestGameIntegration(unittest.TestCase):
         self.assertEqual(output.getvalue(), expected_output)
 
     def test_grid_is_printed_correctly_after_one_computer_piece(self):
-
         expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
             +"\n['.', '.', '.', '.', '.', '.', '.']"
             +"\n['.', '.', '.', '.', '.', '.', '.']"
@@ -77,7 +76,6 @@ class TestGameIntegration(unittest.TestCase):
         self.assertEqual(output.getvalue(), expected_output)
 
     def test_grid_is_printed_correctly_after_two_computer_pieces(self):
-
         expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
             +"\n['.', '.', '.', '.', '.', '.', '.']"
             +"\n['.', '.', '.', '.', '.', '.', '.']"
@@ -96,7 +94,6 @@ class TestGameIntegration(unittest.TestCase):
         self.assertEqual(output.getvalue(), expected_output)
 
     def test_grid_is_printed_correctly_after_two_pieces_from_both_sides(self):
-
         expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
             +"\n['.', '.', '.', '.', '.', '.', '.']"
             +"\n['.', '.', '.', '.', '.', '.', '.']"
