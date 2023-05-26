@@ -59,6 +59,14 @@ class Connect4AI:
             score(int): The score of the game state.
         """
 
+        if self.game_service.check_win_including_piece(game_state[1], game_state[2]):
+            if self.game_service.game_grid[game_state[1]][game_state[2]] == "X":
+                return -10000
+            else:
+                return 10000
+
+        game_grid = game_state[0]
+
         ai_threats = 0
         player_threats = 0
 
