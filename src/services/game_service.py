@@ -19,10 +19,11 @@ class GameService:
         self.game_grid = [['.' for _ in range(7)] for _ in range(6)]
         self.running = True
 
-    def update_grid(self, column, player):
+    def update_grid(self, grid, column, player):
         """Updates the grid with a piece dropped by a player.
 
         Args:
+            grid(list): The game grid to update.
             column(int, 0-6): The column number to drop the piece in.
             player(bool): True if the piece is dropped by the player,
                 False if dropped by the computer.
