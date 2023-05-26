@@ -1,10 +1,10 @@
 from services.game_service import GameService
-from services.ai_service import connect4AI
+from services.ai_service import Connect4AI
 from ui.game_ui import GameUI
 
 if __name__ == "__main__":
     game_service = GameService()
-    ai_service = connect4AI(game_service)
+    ai_service = Connect4AI(game_service)
     game_UI = GameUI(game_service)
     while game_service.running:
         game_UI.print_grid()

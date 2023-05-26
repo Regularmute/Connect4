@@ -1,6 +1,6 @@
 import random
 
-class connect4AI:
+class Connect4AI:
     """Artificial intelligence for the game."""
 
     def __init__(self, game_service):
