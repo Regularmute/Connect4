@@ -12,7 +12,7 @@ if __name__ == "__main__":
         game_service.update_grid(game_service.game_grid, column, True)
         if not game_service.running:
             break
-        column = ai_service.choose_column()
+        column = ai_service.choose_column_minimax()
         game_service.update_grid(game_service.game_grid, column, False)
     print("Board at the end:")
     print("#######################################")
