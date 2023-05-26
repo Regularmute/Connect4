@@ -70,33 +70,52 @@ class Connect4AI:
         ai_threats = 0
         player_threats = 0
 
-        for row in range(6):
+        # Count vertical threats
+        for row in range(1,3):
             for column in range(7):
-                if game_state[row][column] == "X":
-                    if game_state[row][min(5,column+1)] == "X" and \
-                        game_state[row][min(6,column+2)] == "X":
+                if game_grid[row][column] == "X":
+                    if game_grid[row+1][column] == "X" and \
+                        game_grid[row+2][column] == "X":
                         player_threats += 1
-                    if game_state[min(4,row+1)][column] == "X" and \
-                        game_state[min(5,row+2)][column] == "X":
-                        player_threats += 1
-                    if game_state[min(4,row+1)][min(5,column+1)] == "X" and \
-                        game_state[min(5,row+2)][min(6,column+2)] == "X":
-                        player_threats += 1
-                    if game_state[min(4,row+1)][max(1,column-1)] == "X" and \
-                        game_state[min(5,row+2)][max(0,column-2)] == "X":
-                        player_threats += 1
-                elif game_state[row][column] == "O":
-                    if game_state[row][min(5,column+1)] == "O" and \
-                        game_state[row][min(6,column+2)] == "O":
+                if game_grid[row][column] == "O":
+                    if game_grid[row+1][column] == "O" and \
+                        game_grid[row+2][column] == "O":
                         ai_threats += 1
-                    if game_state[min(4,row+1)][column] == "O" and \
-                        game_state[min(5,row+2)][column] == "O":
+
+        # Count horizontal threats
+        for row in range(6):
+            for column in range(1,4):
+                if game_grid[row][column] == "X":
+                    if game_grid[row][column+1] == "X" and \
+                        game_grid[row][column+2] == "X":
+                        player_threats += 1
+                if game_grid[row][column] == "O":
+                    if game_grid[row][column+1] == "O" and \
+                        game_grid[row][column+2] == "O":
                         ai_threats += 1
-                    if game_state[min(4,row+1)][min(5,column+1)] == "O" and \
-                        game_state[min(5,row+2)][min(6,column+2)] == "O":
+
+        # Count rising diagonal threats
+        for row in range(1,3):
+            for column in range(3,7):
+                if game_grid[row][column] == "X":
+                    if game_grid[row+1][column-1] == "X" and \
+                        game_grid[row+2][column-2] == "X":
+                        player_threats += 1
+                if game_grid[row][column] == "O":
+                    if game_grid[row+1][column-1] == "O" and \
+                        game_grid[row+2][column-2] == "O":
                         ai_threats += 1
-                    if game_state[min(4,row+1)][max(1,column-1)] == "O" and \
-                        game_state[min(5,row+2)][max(0,column-2)] == "O":
+
+        # Count falling diagonal threats
+        for row in range(1,3):
+            for column in range(4):
+                if game_grid[row][column] == "X":
+                    if game_grid[row+1][column+1] == "X" and \
+                        game_grid[row+2][column+2] == "X":
+                        player_threats += 1
+                if game_grid[row][column] == "O":
+                    if game_grid[row+1][column+1] == "O" and \
+                        game_grid[row+2][column+2] == "O":
                         ai_threats += 1
 
         score = ai_threats - player_threats
