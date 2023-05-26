@@ -134,9 +134,13 @@ class Connect4AI:
             maximizing_player(bool): True if next move is by the maximizer,
                 False if next  move is by the minimizer.
         """
-
-        if depth == 0 or self.game_service.check_win_including_piece():
+        if depth == 0:
             return self.evaluate(game_state)
+        if self.game_service.check_win_including_piece(game_state[1], game_state[2]):
+            if self.game_service.game_grid[game_state[1]][game_state[2]] == "O":
+                return self.evaluate(game_state) + depth
+            else:
+                return self.evaluate(game_state) - depth
         if maximizing_player:
             value = -10000
             for column in range(7):
