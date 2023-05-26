@@ -1,5 +1,3 @@
-import random
-
 class GameUI:
     """User interface for the game."""
     def __init__(self, game_service):
@@ -25,9 +23,3 @@ class GameUI:
                 print("Invalid input. Please enter a number between 1 and 7.")
                 continue
 
-    def get_column_from_computer(self):
-        """Gets the column number from the computer."""
-        column = random.randint(0, 6)
-        while self.game_service.game_grid[0][column] != ".":
-            column = random.randint(0, 6)
-        return column
