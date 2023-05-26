@@ -146,7 +146,7 @@ class Connect4AI:
             for column in range(7):
                 value = max(value, self.minimax(
                     self.game_service.update_grid(
-                        game_state, column, True), depth-1, alpha, beta, False))
+                        game_state[0], column, True), depth-1, alpha, beta, False))
                 alpha = max(alpha, value)
                 if value >= beta:
                     break
@@ -156,7 +156,7 @@ class Connect4AI:
             for column in range(7):
                 value = min(value, self.minimax(
                     self.game_service.update_grid(
-                        game_state, column, True), depth-1, alpha, beta, True)
+                        game_state[0], column, True), depth-1, alpha, beta, True)
                     )
                 beta = min(beta, value)
                 if value <= alpha:
