@@ -10,6 +10,8 @@ if __name__ == "__main__":
         game_UI.print_grid()
         column = game_UI.get_column_from_player()
         game_service.update_grid(game_service.game_grid, column, True)
+        if not game_service.running:
+            break
         column = ai_service.choose_column()
         game_service.update_grid(game_service.game_grid, column, False)
     print("Board at the end:")
