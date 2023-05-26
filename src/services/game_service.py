@@ -27,6 +27,9 @@ class GameService:
             column(int, 0-6): The column number to drop the piece in.
             player(bool): True if the piece is dropped by the player,
                 False if dropped by the computer.
+
+        Returns:
+            game_grid(list): The updated game grid.
         """
         column = int(column)
 
@@ -47,6 +50,7 @@ class GameService:
                         print("You lose!")
                     self.running = False
                 break
+        return self.game_grid
 
     def check_win_including_piece(self, piece_row=5, piece_column=0):
         """Checks if the game has been won with a piece.
