@@ -32,7 +32,7 @@ class Connect4AI:
         best_column = 0
         fake_grid = copy.deepcopy(self.game_service.game_grid)
         for column in range(7):
-            if self.game_service.game_grid[0][column] == ".":
+            if fake_grid[0][column] == ".":
                 value = self.minimax(
                     self.game_service.update_grid(
                         fake_grid, column, False), 4, -10000, 10000, True)
