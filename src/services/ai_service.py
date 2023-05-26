@@ -1,4 +1,5 @@
-import random, copy
+import random
+import copy
 
 class Connect4AI:
     """Artificial intelligence for the game.
@@ -64,30 +65,30 @@ class Connect4AI:
         for row in range(6):
             for column in range(7):
                 if game_state[row][column] == "X":
-                    if game_state[row][min(5,column + 1)] == "X" and \
-                        game_state[row][min(6,column + 2)] == "X":
+                    if game_state[row][min(5,column+1)] == "X" and \
+                        game_state[row][min(6,column+2)] == "X":
                         player_threats += 1
-                    if game_state[min(4,row + 1)][column] == "X" and \
-                        game_state[min(5,row + 2)][column] == "X":
+                    if game_state[min(4,row+1)][column] == "X" and \
+                        game_state[min(5,row+2)][column] == "X":
                         player_threats += 1
-                    if game_state[min(4,row + 1)][min(5,column + 1)] == "X" and \
-                        game_state[min(5,row + 2)][min(6,column + 2)] == "X":
+                    if game_state[min(4,row+1)][min(5,column+1)] == "X" and \
+                        game_state[min(5,row+2)][min(6,column+2)] == "X":
                         player_threats += 1
-                    if game_state[min(4,row + 1)][max(1,column - 1)] == "X" and \
-                        game_state[min(5,row + 2)][max(0,column - 2)] == "X":
+                    if game_state[min(4,row+1)][max(1,column-1)] == "X" and \
+                        game_state[min(5,row+2)][max(0,column-2)] == "X":
                         player_threats += 1
                 elif game_state[row][column] == "O":
-                    if game_state[row][min(5,column + 1)] == "O" and \
-                        game_state[row][min(6,column + 2)] == "O":
+                    if game_state[row][min(5,column+1)] == "O" and \
+                        game_state[row][min(6,column+2)] == "O":
                         ai_threats += 1
-                    if game_state[min(4,row + 1)][column] == "O" and \
-                        game_state[min(5,row + 2)][column] == "O":
+                    if game_state[min(4,row+1)][column] == "O" and \
+                        game_state[min(5,row+2)][column] == "O":
                         ai_threats += 1
-                    if game_state[min(4,row + 1)][min(5,column + 1)] == "O" and \
-                        game_state[min(5,row + 2)][min(6,column + 2)] == "O":
+                    if game_state[min(4,row+1)][min(5,column+1)] == "O" and \
+                        game_state[min(5,row+2)][min(6,column+2)] == "O":
                         ai_threats += 1
-                    if game_state[min(4,row + 1)][max(1,column - 1)] == "O" and \
-                        game_state[min(5,row + 2)][max(0,column - 2)] == "O":
+                    if game_state[min(4,row+1)][max(1,column-1)] == "O" and \
+                        game_state[min(5,row+2)][max(0,column-2)] == "O":
                         ai_threats += 1
 
         score = ai_threats - player_threats
@@ -114,7 +115,7 @@ class Connect4AI:
             for column in range(7):
                 value = max(value, self.minimax(
                     self.game_service.update_grid(
-                        game_state, column, True), depth - 1, alpha, beta, False))
+                        game_state, column, True), depth-1, alpha, beta, False))
                 alpha = max(alpha, value)
                 if value >= beta:
                     break
@@ -124,7 +125,8 @@ class Connect4AI:
             for column in range(7):
                 value = min(value, self.minimax(
                     self.game_service.update_grid(
-                        game_state, column, True), depth - 1, alpha, beta, True))
+                        game_state, column, True), depth-1, alpha, beta, True)
+                    )
                 beta = min(beta, value)
                 if value <= alpha:
                     break
