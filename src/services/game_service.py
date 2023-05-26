@@ -39,8 +39,8 @@ class GameService:
             piece = "O"
 
         for row in range(5, -1, -1):
-            if self.game_grid[row][column] == ".":
-                self.game_grid[row][column] = piece
+            if grid[row][column] == ".":
+                grid[row][column] = piece
                 piece_row = row
                 piece_column = column
                 if self.check_win_including_piece(piece_row, piece_column):
@@ -50,7 +50,7 @@ class GameService:
                         print("You lose!")
                     self.running = False
                 break
-        return self.game_grid
+        return grid
 
     def check_win_including_piece(self, piece_row=5, piece_column=0):
         """Checks if the game has been won with a piece.
