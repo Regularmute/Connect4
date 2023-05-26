@@ -29,7 +29,8 @@ class GameService:
                 False if dropped by the computer.
 
         Returns:
-            game_grid(list): The updated game grid.
+            game_grid(list): A list with the updated game grid, then the row
+                and then the column of the last piece dropped.
         """
         column = int(column)
 
@@ -37,6 +38,8 @@ class GameService:
             piece = "X"
         else:
             piece = "O"
+        piece_row = 0
+        piece_column = 0
 
         for row in range(5, -1, -1):
             if grid[row][column] == ".":
@@ -50,7 +53,7 @@ class GameService:
                         print("You lose!")
                     self.running = False
                 break
-        return grid
+        return (grid, piece_row, piece_column)
 
     def check_win_including_piece(self, piece_row=5, piece_column=0):
         """Checks if the game has been won with a piece.
