@@ -127,7 +127,8 @@ class Connect4AI:
         """Returns the optimal column for a dropped piece in a game state.
 
         Args:
-            game_state(list): The game grid to evaluate.
+            game_state(list): List with the game grid, last dropped piece's
+                row and column of the piece.
             depth(int): The depth of the tree to search.
             alpha(int): The alpha value for alpha-beta pruning.
             beta(int): The beta value for alpha-beta pruning.
