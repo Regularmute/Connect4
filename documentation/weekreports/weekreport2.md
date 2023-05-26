@@ -15,7 +15,11 @@ This week I have begun testing, and learned how to check for console outputs in 
 
 ## Problems and Questions
 
+Currently the AI doesn't seem to recognize horizontal wins. I also struggle with figuring out how to write tests for the AI class. Implementing the column/move choosing function is also difficult, minimax algorithm seems to be doable with the course material's pseudocode.
 
+I am still trying to figure out the best way to transmit information through recursion about last moves etc.
+
+Plan is to first make the AI seem somewhat intelligent through brute force, then fixing the code.
 
 ## Next Steps
 
@@ -29,5 +33,5 @@ This week I have begun testing, and learned how to check for console outputs in 
 |22.5.|1|Docstring, errors, victory checking|
 |24.5.|3|Testing, refactoring code|
 |25.5.|2|Testing, modularization|
-|26.5.|2|Minimax, AI, styling|
-|Total hours:|9|
+|26.5.|4|Minimax, AI, game state evaluation, styling|
+|Total hours:|11|
