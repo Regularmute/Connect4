@@ -9,6 +9,6 @@ if __name__ == "__main__":
     while game_service.running:
         game_UI.print_grid()
         column = game_UI.get_column_from_player()
-        game_service.update_grid(column, True)
+        game_service.update_grid(game_service.game_grid, column, True)
         column = ai_service.choose_column()
-        game_service.update_grid(column, False)
+        game_service.update_grid(game_service.game_grid, column, False)
