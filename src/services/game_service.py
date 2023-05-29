@@ -74,13 +74,13 @@ class GameService:
 
         # Check vertical connections
         if piece_row < 3:
-            if all(self.game_grid[piece_row+i][piece_column] == new_piece for i in range(4)):
+            if all(grid[piece_row+i][piece_column] == new_piece for i in range(4)):
                 return True
 
         # Check horizontal connections
-        for column in range(max(0, piece_column-3), min(3, piece_column+1)):
+        for column in range(max(0, piece_column-3), min(4, piece_column+1)):
             if all(
-                self.game_grid[piece_row][column+i]
+                grid[piece_row][column+i]
                 == new_piece for i in range(4)
                 ):
                 return True
@@ -88,10 +88,10 @@ class GameService:
         # Check falling diagonal connections
         for row in range(max(0, piece_row-3), min(3, piece_row+1)):
             for column in range(
-                max(0,piece_column-3), min(3, piece_column+1)
+                max(0,piece_column-3), min(4, piece_column+1)
                 ):
                 if all(
-                    self.game_grid[row+i][column+i]
+                    grid[row+i][column+i]
                     == new_piece for i in range(4)
                     ):
                     return True
@@ -99,10 +99,10 @@ class GameService:
         # Check rising diagonal connections
         for row in range(min(5, piece_row+3), piece_row-1, -1):
             for column in range(
-                max(0,piece_column-3), min(3, piece_column+1)
+                max(0,piece_column-3), min(4, piece_column+1)
                 ):
                 if all(
-                    self.game_grid[row-i][column+i]
+                    grid[row-i][column+i]
                     == new_piece for i in range(4)):
                     return True
         return False
