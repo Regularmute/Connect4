@@ -59,8 +59,8 @@ class Connect4AI:
             score(int): The score of the game state.
         """
 
-        if self.game_service.check_win_including_piece(game_state[1], game_state[2]):
-            if self.game_service.game_grid[game_state[1]][game_state[2]] == "X":
+        if self.game_service.check_win_including_piece(game_state[0], game_state[2]):
+            if game_state[0][game_state[1]][game_state[2]] == "X":
                 return -10000
             else:
                 return 10000
@@ -137,8 +137,8 @@ class Connect4AI:
         """
         if depth == 0:
             return self.evaluate(game_state)
-        if self.game_service.check_win_including_piece(game_state[1], game_state[2]):
-            if self.game_service.game_grid[game_state[1]][game_state[2]] == "O":
+        if self.game_service.check_win_including_piece(game_state[0], game_state[2]):
+            if game_state[0][game_state[1]][game_state[2]] == "O":
                 return self.evaluate(game_state) + depth
             else:
                 return self.evaluate(game_state) - depth
@@ -147,7 +147,7 @@ class Connect4AI:
             for column in range(7):
                 value = max(value, self.minimax(
                     self.game_service.update_grid(
-                        game_state[0], column, True), depth-1, alpha, beta, False))
+                        game_state[0], column, False), depth-1, alpha, beta, False))
                 alpha = max(alpha, value)
                 if value >= beta:
                     break
