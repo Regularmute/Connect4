@@ -49,7 +49,7 @@ class GameService:
                 break
         return (grid, piece_row, piece_column)
 
-    def check_win_including_piece(self, piece_row=5, piece_column=0):
+    def check_win_including_piece(self, grid, piece_column=0):
         """Checks if the game has been won with a piece.
 
         Args:
@@ -60,7 +60,14 @@ class GameService:
             True if the game has been won, False if not.
         """
 
-        new_piece = self.game_grid[piece_row][piece_column]
+        piece_row = 0
+
+        for row in range(6):
+            if grid[row][piece_column] != ".":
+                piece_row = row
+                break
+
+        new_piece = grid[piece_row][piece_column]
 
         if new_piece == ".":
             return False
