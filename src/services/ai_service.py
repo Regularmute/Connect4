@@ -53,7 +53,7 @@ class Connect4AI:
         determine the state's "value".
 
         Args:
-            game_state(list): The game grid to evaluate.
+            game_state(list): The game grid to evaluate, and the coordinates of its last piece.
 
         Returns:
             score(int): The score of the game state.
@@ -133,7 +133,7 @@ class Connect4AI:
             alpha(int): The alpha value for alpha-beta pruning.
             beta(int): The beta value for alpha-beta pruning.
             maximizing_player(bool): True if next move is by the maximizer,
-                False if next  move is by the minimizer.
+                False if next move is by the minimizer.
         """
         if depth == 0:
             return self.evaluate(game_state)
