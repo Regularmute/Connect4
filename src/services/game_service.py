@@ -46,12 +46,6 @@ class GameService:
                 grid[row][column] = piece
                 piece_row = row
                 piece_column = column
-                if self.check_win_including_piece(piece_row, piece_column):
-                    if player:
-                        print("You win!")
-                    else:
-                        print("You lose!")
-                    self.running = False
                 break
         return (grid, piece_row, piece_column)
 
