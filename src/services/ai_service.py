@@ -141,9 +141,9 @@ class Connect4AI:
             return self.evaluate(game_state)
         if self.game_service.check_win_including_piece(game_state[0], game_state[2]):
             if game_state[0][game_state[1]][game_state[2]] == "O":
-                return self.evaluate(game_state) + depth
+                return 10000 - depth
             else:
-                return self.evaluate(game_state) - depth
+                return -10000 + depth
         if maximizing_player:
             value = -10000
             for column in range(7):
