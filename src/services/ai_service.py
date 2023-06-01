@@ -128,10 +128,14 @@ class Connect4AI:
             game_state(list): List with the game grid, last dropped piece's
                 row and column of the piece.
             depth(int): The depth of the tree to search.
-            alpha(int): The alpha value for alpha-beta pruning.
+            alpha(int): The alpha value for alpha-beta pruning: the best value
+                found so far for an attainable game state.
             beta(int): The beta value for alpha-beta pruning.
             maximizing_player(bool): True if next move is by the maximizer,
                 False if next move is by the minimizer.
+
+        Returns:
+            value(int): The heuristical numerical value of the game state.
         """
         if depth == 0:
             return self.evaluate(game_state)
