@@ -35,7 +35,7 @@ class Connect4AI:
             if fake_grid[0][column] == ".":
                 value = self.minimax(
                     self.game_service.update_grid(
-                        fake_grid, column, False), 4, -10000, 10000, True)
+                        fake_grid, column, False), 4, -10000, 10000, False)
                 if not value:
                     value = 0
                 if not best_value:
