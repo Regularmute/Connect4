@@ -26,4 +26,4 @@
 |Date|Hours spent|Work focus|
 |---|---|---|
 |29.5.|2|Testing, refactoring, bug fixing|
-|Total hours:|12|
+|Total hours:|2|

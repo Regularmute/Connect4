@@ -29,8 +29,9 @@ class GameService:
                 False if dropped by the computer.
 
         Returns:
-            game_grid(list): A list with the updated game grid, then the row
-                and then the column of the last piece dropped.
+            grid: The updated game grid.
+            piece_row(int): The row number of the piece dropped.
+            piece_column(int): The column number of the piece dropped.
         """
         column = int(column)
 
@@ -53,7 +54,6 @@ class GameService:
         """Checks if the game has been won with a piece.
 
         Args:
-            piece_row(int): The row number of the last piece dropped.
             piece_column(int): The column number of the last piece dropped.
 
         Returns:
