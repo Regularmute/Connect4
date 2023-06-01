@@ -153,7 +153,7 @@ class Connect4AI:
                 alpha = max(alpha, value)
                 if value >= beta:
                     break
-                return value
+            return value
         else:
             value = 10000
             for column in range(7):
@@ -164,4 +164,4 @@ class Connect4AI:
                 beta = min(beta, value)
                 if value <= alpha:
                     break
-                return value
+            return value
