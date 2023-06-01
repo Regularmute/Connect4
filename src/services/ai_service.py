@@ -38,8 +38,6 @@ class Connect4AI:
                         fake_grid, column, False), 4, -10000, 10000, False)
                 if not value:
                     value = 0
-                if not best_value:
-                    best_value = value
                 if value > best_value:
                     best_value = value
                     best_column = column
