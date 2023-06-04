@@ -2,7 +2,7 @@
 
 ## Progress Made
 
-* More unittests have been added for Game service.
+* More unit tests have been added for GameService.
 * Discovered and fixed a bug where the game wasn't recognizing victories in certain columns. This also affected the AI.
 * Decoupled victory checking by calling it from the main game loop instead of inside update_grid.
 * AI seems to recognize immediate victories.
@@ -17,9 +17,8 @@ As my understanding on the topic has been improving, I also feel more confident 
 
 ## Problems and Questions
 
-* I am struggling a bit with the evaluation function: probably I'll have to  define multiple conditions that either add or reduce points from the game state, then return the final adjusted score at the end of the function.
-* Currently the AI doesn't stop immediate victories for the player: most likely an issue in tracking which player's turn it is.
-* Still haven't done tests for the ai-service yet.
+* I am struggling a bit with evaluation heuristics for each game state: I may have to define multiple conditions that either add or reduce points from the game state, then return the final adjusted score at the end of the function.
+* Currently the AI doesn't stop immediate victories for the player: possibly an issue in tracking which player's turn it is.
 
 
 ## Next Steps
@@ -34,4 +33,5 @@ As my understanding on the topic has been improving, I also feel more confident 
 |---|---|---|
 |29.5.|2|Testing, refactoring, bug fixing|
 |1.6.|2|Studying minimax, cleaning code, bug fixing, refactoring minimax|
-|Total hours:|2|
+|4.6.|2|Testing AI, documentation, refactoring minimax|
+|Total hours:|6|
