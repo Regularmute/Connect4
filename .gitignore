@@ -5,3 +5,6 @@ __pycache__
 ## Coverage reports
 .coverage
 htmlcov
+
+## Mac OS
+.DS_Store
