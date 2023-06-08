@@ -237,13 +237,14 @@ class GameAI:
         Returns:
             value(int): The heuristical numerical value of the game state.
         """
+
         if depth == 0:
             return self.evaluate(game_state)
         if self.check_win_including_piece(game_state[0], game_state[2]):
             if game_state[0][game_state[1]][game_state[2]] == "O":
-                return 10000 - depth
+                return 10000 + depth
             else:
-                return -10000 + depth
+                return -10000 - depth
         if maximizing_player:
             value = -10000
             for column in range(7):
