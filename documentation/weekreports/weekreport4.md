@@ -5,6 +5,9 @@
 * GameService and AI-Service Classes have been combined into one GameAI class.
 * Testing has been made robust (each vertical row of a grid is checked for victories and imminent victories)
 * Fixed a large bug where the AI didn't reset the game board between iterations when comparing columns to drop a piece.
+* AI now selects moves that lead to imminent victory.
+* AI looks 6 moves ahead (depth 6 for minimax) wihtout noticeable delay when playing.
+    * Games against it are on average more difficult to win.
 
 ## Problems and Questions
 
@@ -13,9 +16,9 @@
 
 ## Next Steps
 
-* Improve unit testing to cover more situations
-* Look into performance/stress testing
-*
+* Improve unit testing to cover more situations.
+    * Test that the AI blocks imminent wins for player (3 in a row, later 2 in a row).
+* Look into performance/stress testing.
 
 
 ## Hours spent
