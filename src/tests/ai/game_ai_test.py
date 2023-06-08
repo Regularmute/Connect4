@@ -5,6 +5,8 @@ class TestGameAI(unittest.TestCase):
     def setUp(self):
         self.game_ai = GameAI()
 
+    # Tests for the AI recognizing whether or not someone has won in a game board.
+
     def test_check_win_including_piece_returns_false_for_empty_grid(self):
         self.assertFalse(self.game_ai.check_win_including_piece(self.game_ai.game_grid, 0))
 
@@ -232,6 +234,8 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
         self.assertFalse(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3))
+
+    # Tests that AI selects a column that leads to victory.
 
     def test_choose_column_minimax_returns_winning_column_horizontally(self):
         self.game_ai.update_grid(self.game_ai.game_grid, 0, False)
