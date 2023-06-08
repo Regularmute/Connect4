@@ -1,13 +1,13 @@
 import unittest
 import sys
 from io import StringIO
-from services.game_service import GameService
+from ai.game_ai import GameAI
 from index import GameUI
 
 class TestGameIntegration(unittest.TestCase):
     def setUp(self):
-        self.game_service = GameService()
-        self.game_ui = GameUI(self.game_service)
+        self.game_ai = GameAI()
+        self.game_ui = GameUI(self.game_ai)
 
     def test_initial_grid_is_printed_correctly(self):
         expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
@@ -32,7 +32,7 @@ class TestGameIntegration(unittest.TestCase):
             +"\n['X', '.', '.', '.', '.', '.', '.']\n"
         )
 
-        self.game_service.update_grid(self.game_service.game_grid, 0, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
 
         output = StringIO()
         sys.stdout = output
@@ -49,8 +49,8 @@ class TestGameIntegration(unittest.TestCase):
             +"\n['.', '.', '.', 'X', '.', '.', '.']\n"
         )
 
-        self.game_service.update_grid(self.game_service.game_grid, 3, True)
-        self.game_service.update_grid(self.game_service.game_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
         output = StringIO()
         sys.stdout = output
@@ -67,7 +67,7 @@ class TestGameIntegration(unittest.TestCase):
             +"\n['.', 'O', '.', '.', '.', '.', '.']\n"
         )
 
-        self.game_service.update_grid(self.game_service.game_grid, 1, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
 
         output = StringIO()
         sys.stdout = output
@@ -84,8 +84,8 @@ class TestGameIntegration(unittest.TestCase):
             +"\n['.', '.', '.', '.', 'O', '.', '.']\n"
         )
 
-        self.game_service.update_grid(self.game_service.game_grid, 4, False)
-        self.game_service.update_grid(self.game_service.game_grid, 4, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
 
         output = StringIO()
         sys.stdout = output
@@ -102,10 +102,10 @@ class TestGameIntegration(unittest.TestCase):
             +"\n['.', '.', 'O', 'X', 'X', '.', '.']\n"
         )
 
-        self.game_service.update_grid(self.game_service.game_grid, 3, True)
-        self.game_service.update_grid(self.game_service.game_grid, 3, False)
-        self.game_service.update_grid(self.game_service.game_grid, 4, True)
-        self.game_service.update_grid(self.game_service.game_grid, 2, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, False)
 
         output = StringIO()
         sys.stdout = output
