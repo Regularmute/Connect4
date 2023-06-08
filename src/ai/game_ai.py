@@ -130,8 +130,8 @@ class GameAI:
         """
         best_value = -10000
         best_column = 0
-        fake_grid = copy.deepcopy(self.game_grid)
         for column in range(7):
+            fake_grid = copy.deepcopy(self.game_grid)
             if fake_grid[0][column] == ".":
                 value = self.minimax(
                     self.update_grid(
