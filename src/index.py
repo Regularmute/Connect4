@@ -3,10 +3,10 @@ from ui.game_ui import GameUI
 
 if __name__ == "__main__":
     game_ai = GameAI()
-    game_UI = GameUI(game_ai)
+    game_ui = GameUI(game_ai)
     while game_ai.running:
-        game_UI.print_grid()
-        column = game_UI.get_column_from_player()
+        game_ui.print_grid()
+        column = game_ui.get_column_from_player()
         game_ai.update_grid(game_ai.game_grid, column, True)
         if game_ai.check_win_including_piece(game_ai.game_grid, column):
             print("Player won!")
@@ -20,5 +20,5 @@ if __name__ == "__main__":
             game_ai.running = False
     print("Board at the end:")
     print("#######################################")
-    game_UI.print_grid()
+    game_ui.print_grid()
     print("#######################################")
