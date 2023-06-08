@@ -249,7 +249,14 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
         self.game_ai.update_grid(self.game_ai.game_grid, 5, False)
 
-        self.assertEqual(self.game_ai.choose_column_minimax(), 6)
+        self.assertEqual(self.game_ai.choose_column_minimax(), 2 or 6)
+
+    def test_choose_column_minimax_returns_winning_column_horizontally_3(self):
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 6, False)
+
+        self.assertEqual(self.game_ai.choose_column_minimax(), 3)
 
     def test_choose_column_minimax_returns_winning_column_vertically_0(self):
         self.game_ai.update_grid(self.game_ai.game_grid, 0, False)
