@@ -111,7 +111,7 @@ class GameAI:
                     return True
         return False
 
-    def choose_column(self):
+    def choose_column_random(self):
         """Chooses a random column to drop a piece in.
 
         Returns:
