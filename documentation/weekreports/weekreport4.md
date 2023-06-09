@@ -5,13 +5,13 @@
 * GameService and AI-Service Classes have been combined into one GameAI class.
 * Testing has been made robust (each vertical row of a grid is checked for victories and imminent victories, more imminent horizontal victories are checked.)
 * Fixed a large bug where the AI didn't reset the game board between iterations when comparing columns to drop a piece.
+    * The same bug was found inside the minimax functions.
 * AI now selects moves that lead to imminent victory.
-* AI looks 6 moves ahead (depth 6 for minimax) without noticeable delay when playing.
-    * Games against it are on average more difficult to win.
+* AI now prevents imminent victories by player.
 
 ## Problems and Questions
 
-*
+* Currently I'm not sure how to go about performance or stress testing the project, I will most likely look at the course material for Java and try to apply some principles for Python. In addition, I will most likely search online for information as well.
 
 
 ## Next Steps
@@ -27,4 +27,5 @@
 |---|---|---|
 |8.6.|1|Documentation, refactoring project structure|
 |8.6.|2|Testing, refactoring AI code|
-|Total hours:|3|
+|9.6.|1|Testing, refactoring Minimax|
+|Total hours:|4|
