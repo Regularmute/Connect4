@@ -249,8 +249,9 @@ class GameAI:
         if maximizing_player:
             value = -10000
             for column in range(7):
+                fake_grid = copy.deepcopy(game_state[0])
                 value = max(value, self.minimax(
-                    self.update_grid(game_state[0], column, False),
+                    self.update_grid(fake_grid, column, False),
                     depth-1, alpha, beta, False))
                 alpha = max(alpha, value)
                 if value >= beta:
@@ -259,9 +260,10 @@ class GameAI:
         else:
             value = 10000
             for column in range(7):
+                fake_grid = copy.deepcopy(game_state[0])
                 value = min(value, self.minimax(
                     self.update_grid(
-                        game_state[0], column, True), depth-1, alpha, beta, True)
+                        fake_grid, column, True), depth-1, alpha, beta, True)
                     )
                 beta = min(beta, value)
                 if value <= alpha:
