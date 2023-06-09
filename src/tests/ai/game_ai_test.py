@@ -488,15 +488,15 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 1, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 2, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 2, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 2, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
 
         self.assertEqual(self.game_ai.choose_column_minimax(), 3)
 
@@ -504,15 +504,15 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 2, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 2, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 4, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 4, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
 
         self.assertEqual(self.game_ai.choose_column_minimax(), 4)
 
@@ -520,15 +520,15 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 4, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 4, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 5, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 5, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, False)
 
         self.assertEqual(self.game_ai.choose_column_minimax(), 5)
 
@@ -536,15 +536,15 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 4, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 5, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 5, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 5, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 6, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 6, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 6, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 6, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 6, False)
 
         self.assertEqual(self.game_ai.choose_column_minimax(), 6)
 
@@ -552,15 +552,15 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 6, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 5, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 5, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 4, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 4, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
 
         self.assertEqual(self.game_ai.choose_column_minimax(), 3)
 
@@ -568,15 +568,15 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 4, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 2, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 2, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, False)
 
         self.assertEqual(self.game_ai.choose_column_minimax(), 2)
 
@@ -584,15 +584,15 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 3, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 2, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 2, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 2, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 1, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 1, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
 
         self.assertEqual(self.game_ai.choose_column_minimax(), 1)
 
@@ -600,14 +600,14 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 2, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 2, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 1, False)
-        self.game_ai.update_grid(self.game_ai.update_grid, 1, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 0, True)
-        self.game_ai.update_grid(self.game_ai.update_grid, 0, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 0, False)
 
         self.assertEqual(self.game_ai.choose_column_minimax(), 0)
