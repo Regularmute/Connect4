@@ -161,8 +161,7 @@ class GameAI:
         if self.check_win_including_piece(game_state[0], game_state[2]):
             if game_state[0][game_state[1]][game_state[2]] == "X":
                 return -10000
-            else:
-                return 10000
+            return 10000
 
         game_grid = game_state[0]
 
@@ -244,8 +243,7 @@ class GameAI:
         if self.check_win_including_piece(game_state[0], game_state[2]):
             if game_state[0][game_state[1]][game_state[2]] == "O":
                 return 10000 + depth
-            else:
-                return -10000 - depth
+            return -10000 - depth
         if maximizing_player:
             value = -10000
             for column in range(7):
@@ -257,15 +255,14 @@ class GameAI:
                 if value >= beta:
                     break
             return value
-        else:
-            value = 10000
-            for column in range(7):
-                fake_grid = copy.deepcopy(game_state[0])
-                value = min(value, self.minimax(
-                    self.update_grid(
-                        fake_grid, column, True), depth-1, alpha, beta, True)
-                    )
-                beta = min(beta, value)
-                if value <= alpha:
-                    break
-            return value
+        value = 10000
+        for column in range(7):
+            fake_grid = copy.deepcopy(game_state[0])
+            value = min(value, self.minimax(
+                self.update_grid(
+                    fake_grid, column, True), depth-1, alpha, beta, True)
+                )
+            beta = min(beta, value)
+            if value <= alpha:
+                break
+        return value
