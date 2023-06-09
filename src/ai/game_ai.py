@@ -1,7 +1,7 @@
+"""Handles the game logic and AI."""
+
 import random
 import copy
-
-"""Handles the game logic and AI."""
 
 class GameAI:
     """Represents the game logic in charge of tracking the current game state.
