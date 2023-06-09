@@ -13,7 +13,7 @@ if __name__ == "__main__":
             game_ai.running = False
         if not game_ai.running:
             break
-        column = game_ai.choose_column_minimax()
+        column = game_ai.choose_column()
         game_ai.update_grid(game_ai.game_grid, column, False)
         if game_ai.check_win_including_piece(game_ai.game_grid, column):
             print("Computer won!")

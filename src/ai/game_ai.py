@@ -122,7 +122,7 @@ class GameAI:
             column = random.randint(0, 6)
         return column
 
-    def choose_column_minimax(self):
+    def choose_column(self):
         """Chooses a column to drop a piece in using the minimax algorithm.
 
         Returns:
