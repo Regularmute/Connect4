@@ -22,6 +22,7 @@ class GameAI:
         """
         self.game_grid = [['.' for _ in range(7)] for _ in range(6)]
         self.running = True
+        self.search_order = [3, 2, 4, 1, 5, 0, 6]
 
     def update_grid(self, grid, column, player):
         """Updates the grid with a piece dropped by a player.
@@ -130,7 +131,7 @@ class GameAI:
         """
         best_value = -10000
         best_column = 0
-        for column in range(7):
+        for column in self.search_order:
             fake_grid = copy.deepcopy(self.game_grid)
             if fake_grid[0][column] == ".":
                 value = self.minimax(
@@ -246,7 +247,7 @@ class GameAI:
             return -10000 - depth
         if maximizing_player:
             value = -10000
-            for column in range(7):
+            for column in self.search_order:
                 fake_grid = copy.deepcopy(game_state[0])
                 value = max(value, self.minimax(
                     self.update_grid(fake_grid, column, False),
@@ -256,7 +257,7 @@ class GameAI:
                     break
             return value
         value = 10000
-        for column in range(7):
+        for column in self.search_order:
             fake_grid = copy.deepcopy(game_state[0])
             value = min(value, self.minimax(
                 self.update_grid(
