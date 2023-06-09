@@ -8,6 +8,7 @@
     * The same bug was found inside the minimax functions.
 * AI now selects moves that lead to imminent victory.
 * AI now prevents imminent victories by player.
+* AI now searches for moves in the middle columns before moving onto outer columns. It feels like games after this change have become significantly harder for the player to win.
 
 ## Problems and Questions
 
@@ -27,5 +28,5 @@
 |---|---|---|
 |8.6.|1|Documentation, refactoring project structure|
 |8.6.|2|Testing, refactoring AI code|
-|9.6.|1|Testing, refactoring Minimax|
-|Total hours:|4|
+|9.6.|2|Testing, refactoring Minimax|
+|Total hours:|5|
