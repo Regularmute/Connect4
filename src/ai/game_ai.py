@@ -19,6 +19,11 @@ class GameAI:
             '.' = empty tile
             'X' = player piece (human)
             'O' = computer piece
+
+        The main program loop will run while the game is running.
+
+        The search order defines what order the computer will search for an
+            optimal move, starting with the middle columns.
         """
         self.game_grid = [['.' for _ in range(7)] for _ in range(6)]
         self.running = True
