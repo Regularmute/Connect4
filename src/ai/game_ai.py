@@ -60,7 +60,7 @@ class GameAI:
                 break
         return (grid, piece_row, piece_column)
 
-    def check_win_including_piece(self, grid, piece_column=0):
+    def check_win_including_piece(self, grid, piece_row=5, piece_column=0):
         """Checks if the game has been won with a piece.
 
         Args:
@@ -69,13 +69,6 @@ class GameAI:
         Returns:
             True if the game has been won, False if not.
         """
-
-        piece_row = 0
-
-        for row in range(6):
-            if grid[row][piece_column] != ".":
-                piece_row = row
-                break
 
         new_piece = grid[piece_row][piece_column]
 
@@ -164,7 +157,7 @@ class GameAI:
             score(int): The score of the game state.
         """
 
-        if self.check_win_including_piece(game_state[0], game_state[2]):
+        if self.check_win_including_piece(game_state[0], game_state[1], game_state[2]):
             if game_state[0][game_state[1]][game_state[2]] == "X":
                 return -10000
             return 10000
@@ -246,7 +239,7 @@ class GameAI:
 
         if depth == 0:
             return self.evaluate(game_state)
-        if self.check_win_including_piece(game_state[0], game_state[2]):
+        if self.check_win_including_piece(game_state[0], game_state[1], game_state[2]):
             if game_state[0][game_state[1]][game_state[2]] == "O":
                 return 10000 + depth
             return -10000 - depth
