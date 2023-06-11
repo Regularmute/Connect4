@@ -1,3 +1,9 @@
+"""Module that runs the game loop.
+
+The depth of the minimax algorithm can be adjusted by inserting the desired
+depth as a parameter of GameAI(). The default depth is 4.
+"""
+
 from ai.game_ai import GameAI
 from ui.game_ui import GameUI
 

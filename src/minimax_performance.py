@@ -1,3 +1,9 @@
+"""Module that tests the performance of the minimax algorithm.
+
+The algorithm can be tested with different depths by changing the parameter
+of GameAI(). The default depth is 4.
+"""
+
 import timeit
 
 test_code = """
