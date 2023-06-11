@@ -7,8 +7,6 @@
 
 ![](./pictures/CoverageReport.png)
 
-The AI-service in charge of decision making and the minimax-algorithm hasn't been tested yet.
-
 ## Performance testing
 
 As the only scaling variable in the program is the depth of the minimax queries, the time taken for the AI to choose a move is measured by the code in src/minimax_performance.py. Please note that this test currently always assumes an empty game board, so the times may vary with different game states.
