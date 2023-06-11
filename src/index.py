@@ -14,8 +14,8 @@ if __name__ == "__main__":
         if not game_ai.running:
             break
         column = game_ai.choose_column()
-        game_state = game_ai.update_grid(game_ai.game_grid, game_state[1], column, False)
-        if game_ai.check_win_including_piece(game_ai.game_grid, column):
+        game_state = game_ai.update_grid(game_ai.game_grid, column, False)
+        if game_ai.check_win_including_piece(game_ai.game_grid, game_state[1], column):
             print("Computer won!")
             game_ai.running = False
     print("Board at the end:")
