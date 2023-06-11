@@ -3,14 +3,14 @@
 ## Progress Made
 
 * GameService and AI-Service Classes have been combined into one GameAI class.
-* Testing has been made robust (each vertical row of a grid is checked for victories and imminent victories, more imminent horizontal victories are checked.)
+* Testing has been made more robust (each vertical row of a grid is checked for victories and imminent victories, more imminent horizontal victories are checked.)
 * Fixed a large bug where the AI didn't reset the game board between iterations when comparing columns to drop a piece.
     * The same bug was found inside the minimax functions.
 * AI now selects moves that lead to imminent victory.
 * AI now prevents imminent victories by player.
 * AI now searches for moves in the middle columns before moving onto outer columns. It feels like games after this change have become significantly harder for the player to win.
 
-* Performance testing the duration of AI's move selection has been started.
+* Performance testing the duration of AI's move selection has been started and progress recorded in the testing document.
 
 ## Problems and Questions
 
@@ -21,9 +21,11 @@
 
 ## Next Steps
 
-* Improve unit testing to cover more situations.
-    * Test that the AI blocks imminent wins for player (3 in a row, later 2 in a row).
-* Look into performance/stress testing.
+* Improve and doublecheck documentation
+* Improve the heuristic evaluation function for game states
+* Implement handling for tied games
+* Look into iterative deepening
+* Look into transposition tables
 
 
 ## Hours spent
@@ -34,4 +36,5 @@
 |8.6.|2|Testing, refactoring AI code|
 |9.6.|2|Testing, refactoring Minimax|
 |10.6.|1|Performance testing, documentation, code refactoring|
-|Total hours:|6|
+|11.6.|2|Documentation, performance testing|
+|Total hours:|8|
