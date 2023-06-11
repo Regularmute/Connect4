@@ -11,3 +11,4 @@ Currently the time complexity of the minimax function is O^n as expected.
 ## Flaws and improvements
 
 ## Sources
+* Line chart demonstrating performance test results made with [RapidTables](https://www.rapidtables.com/tools/line-graph.html)
