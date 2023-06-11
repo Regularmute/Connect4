@@ -11,7 +11,7 @@ class GameAI:
             running(bool): True if the game is running,
                 False if the game is over.
     """
-    def __init__(self):
+    def __init__(self, depth=4):
         """Initializes the game grid and sets the game to running.
 
         The game grid is a 2D list of 6 rows and 7 columns. Each empty tile is
@@ -28,6 +28,7 @@ class GameAI:
         self.game_grid = [['.' for _ in range(7)] for _ in range(6)]
         self.running = True
         self.search_order = [3, 2, 4, 1, 5, 0, 6]
+        self.depth = depth
 
     def update_grid(self, grid, column, player):
         """Updates the grid with a piece dropped by a player.
@@ -134,7 +135,7 @@ class GameAI:
             if fake_grid[0][column] == ".":
                 value = self.minimax(
                     self.update_grid(
-                        fake_grid, column, False), 4, -10000, 10000, False)
+                        fake_grid, column, False), self.depth, -10000, 10000, False)
                 if not value:
                     value = 0
                 if value > best_value:
