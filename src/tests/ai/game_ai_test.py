@@ -220,6 +220,50 @@ class TestGameAI(unittest.TestCase):
 
         self.assertFalse(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,2))
 
+    def test_check_win_including_piece_returns_false_for_three_rising_diagonal_pieces_2(self):
+
+        """ Tests the following game board:
+            ['.', '.', 'X', '.', 'O', '.', '.'],
+            ['.', '.', 'O', 'O', 'X', '.', '.'],
+            ['.', '.', 'O', 'O', 'X', '.', '.'],
+            ['.', 'X', 'O', 'X', 'X', '.', '.'],
+            ['.', 'X', 'X', 'O', 'O', 'X', '.'],
+            ['.', 'O', 'O', 'X', 'X', 'O', '.']
+
+            The program erroneously announced computer victory after it placed
+                a piece on row 0, column 4 (top row, 5th tile).
+        """
+
+        self.game_ai.game_grid[0][2] = 'X'
+        self.game_ai.game_grid[0][4] = 'O'
+
+        self.game_ai.game_grid[1][2] = 'O'
+        self.game_ai.game_grid[1][3] = 'O'
+        self.game_ai.game_grid[1][4] = 'X'
+
+        self.game_ai.game_grid[2][2] = 'O'
+        self.game_ai.game_grid[2][3] = 'O'
+        self.game_ai.game_grid[2][4] = 'X'
+
+        self.game_ai.game_grid[3][1] = 'X'
+        self.game_ai.game_grid[3][2] = 'O'
+        self.game_ai.game_grid[3][3] = 'X'
+        self.game_ai.game_grid[3][4] = 'X'
+
+        self.game_ai.game_grid[4][1] = 'X'
+        self.game_ai.game_grid[4][2] = 'X'
+        self.game_ai.game_grid[4][3] = 'O'
+        self.game_ai.game_grid[4][4] = 'O'
+        self.game_ai.game_grid[4][5] = 'X'
+
+        self.game_ai.game_grid[5][1] = 'O'
+        self.game_ai.game_grid[5][2] = 'O'
+        self.game_ai.game_grid[5][3] = 'X'
+        self.game_ai.game_grid[5][4] = 'X'
+        self.game_ai.game_grid[5][5] = 'O'
+
+        self.assertFalse(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,4))
+
     def test_check_win_including_piece_returns_false_for_three_falling_diagonal_pieces(self):
         self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
         self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
