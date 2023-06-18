@@ -2,6 +2,7 @@
 
 import random
 import copy
+import timeit
 
 class GameAI:
     """Represents the game logic in charge of tracking the current game state.
@@ -136,18 +137,27 @@ class GameAI:
         """
         best_value = -10000
         best_column = 0
-        for column in self.search_order:
-            fake_grid = copy.deepcopy(self.game_grid)
-            if fake_grid[0][column] == ".":
-                value = self.minimax(
-                    self.update_grid(
-                        fake_grid, column, False), self.depth, -10000, 10000, False, self.moves)
-                if not value:
-                    value = 0
-                if value > best_value:
-                    best_value = value
-                    best_column = column
+        extra_depth = 0
+        start_time = timeit.default_timer()
+        elapsed_time = 0
+        while elapsed_time < 1:
+            for column in self.search_order:
+                fake_grid = copy.deepcopy(self.game_grid)
+                if fake_grid[0][column] == ".":
+                    value = self.minimax(
+                        self.update_grid(
+                            fake_grid, column, False), self.depth + extra_depth, -10000, 10000, False, self.moves)
+                    if not value:
+                        value = 0
+                    if value > best_value:
+                        best_value = value
+                        best_column = column
+            extra_depth += 1
+            print("elapsed_time: ", elapsed_time)
+            elapsed_time = timeit.default_timer() - start_time
         print("Computer chose column " + str(best_column + 1))
+        print("Time elapsed: " + str(elapsed_time))
+        print("Depth reached: ", + self.depth + extra_depth)
         return best_column
 
     def evaluate(self, game_state):
