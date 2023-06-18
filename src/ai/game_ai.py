@@ -29,6 +29,7 @@ class GameAI:
         self.running = True
         self.search_order = [3, 2, 4, 1, 5, 0, 6]
         self.depth = depth
+        self.moves = 0
 
     def update_grid(self, grid, column, player):
         """Updates the grid with a piece dropped by a player.
@@ -135,7 +136,7 @@ class GameAI:
             if fake_grid[0][column] == ".":
                 value = self.minimax(
                     self.update_grid(
-                        fake_grid, column, False), self.depth, -10000, 10000, False)
+                        fake_grid, column, False), self.depth, -10000, 10000, False, self.moves)
                 if not value:
                     value = 0
                 if value > best_value:
@@ -221,7 +222,7 @@ class GameAI:
         return score
 
 
-    def minimax(self, game_state, depth, alpha, beta, maximizing_player):
+    def minimax(self, game_state, depth, alpha, beta, maximizing_player, moves):
         """Returns the optimal column for a dropped piece in a game state.
 
         Args:
@@ -240,6 +241,8 @@ class GameAI:
 
         if depth == 0:
             return self.evaluate(game_state)
+        if moves == 42:
+            return 0
         if self.check_win_including_piece(game_state[0], game_state[1], game_state[2]):
             if game_state[0][game_state[1]][game_state[2]] == "O":
                 return 10000 + depth
@@ -250,7 +253,7 @@ class GameAI:
                 fake_grid = copy.deepcopy(game_state[0])
                 value = max(value, self.minimax(
                     self.update_grid(fake_grid, column, False),
-                    depth-1, alpha, beta, False))
+                    depth-1, alpha, beta, False, moves+1))
                 alpha = max(alpha, value)
                 if value >= beta:
                     break
@@ -260,7 +263,7 @@ class GameAI:
             fake_grid = copy.deepcopy(game_state[0])
             value = min(value, self.minimax(
                 self.update_grid(
-                    fake_grid, column, True), depth-1, alpha, beta, True)
+                    fake_grid, column, True), depth-1, alpha, beta, True, moves+1)
                 )
             beta = min(beta, value)
             if value <= alpha:
