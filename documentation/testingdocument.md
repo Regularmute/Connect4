@@ -3,6 +3,8 @@
 
 ## Unit testing
 
+Unit tests currently test that the AI correctly picks columns that would either win the game for it or prevent it from losing. They also test that the victory checking function works correctly.
+
 ### Testing coverage
 
 ![](./pictures/CoverageReport.png)
