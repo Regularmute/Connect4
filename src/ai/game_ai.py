@@ -141,7 +141,7 @@ class GameAI:
                 if value > best_value:
                     best_value = value
                     best_column = column
-        print("Computer chose column " + str(best_column))
+        print("Computer chose column " + str(best_column + 1))
         return best_column
 
     def evaluate(self, game_state):
