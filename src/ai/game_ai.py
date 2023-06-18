@@ -10,6 +10,11 @@ class GameAI:
                 the board state of the game.
             running(bool): True if the game is running,
                 False if the game is over.
+            search_order(list): The order in which minimax searches for the
+                best move.
+            depth(int): The depth of the minimax algorithm.
+            moves(int): The number of moves performed in the game. Used to
+                recognise tied games.
     """
     def __init__(self, depth=4):
         """Initializes the game grid and sets the game to running.
@@ -234,6 +239,8 @@ class GameAI:
             beta(int): The beta value for alpha-beta pruning.
             maximizing_player(bool): True if next move is by the maximizer,
                 False if next move is by the minimizer.
+            moves(int): The amount of moves made in the hypothetical game
+                state. Recognizes a draw at 42 moves.
 
         Returns:
             value(int): The heuristical numerical value of the game state.
