@@ -101,7 +101,7 @@ class GameAI:
                     return True
 
         # Check rising diagonal connections
-        for row in range(min(5, piece_row+3), piece_row-1, -1):
+        for row in range(min(5, piece_row+3), max(4, piece_row-1), -1):
             for column in range(
                 max(0,piece_column-3), min(4, piece_column+1)
                 ):
