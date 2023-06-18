@@ -155,9 +155,9 @@ class GameAI:
             extra_depth += 1
             print("elapsed_time: ", elapsed_time)
             elapsed_time = timeit.default_timer() - start_time
-        print("Computer chose column " + str(best_column + 1))
-        print("Time elapsed: " + str(elapsed_time))
-        print("Depth reached: ", + self.depth + extra_depth)
+        print("Computer chose column ", str(best_column + 1))
+        print("Time elapsed: ", str(elapsed_time))
+        print("Depth reached: ", self.depth + extra_depth)
         return best_column
 
     def evaluate(self, game_state):
