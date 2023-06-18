@@ -29,4 +29,5 @@
 |---|---|---|
 |17.6.|1|Documentation, testing, debugging, implementing draws|
 |18.6.|3|Refactoring, bug fixing, experimenting heuristics, iterative deepening|
-|Total hours:|4|
+|18.6.|1|Documentation|
+|Total hours:|5|
