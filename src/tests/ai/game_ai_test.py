@@ -6,6 +6,9 @@ class TestGameAI(unittest.TestCase):
         self.game_ai = GameAI()
 
     # Tests for the AI recognizing whether or not someone has won in a game board.
+    # Some tests have been made through "accurate moves" with the actual board
+    #   updating function, and many have been by directly placing the tiles on
+    #   the board.
 
     def test_check_win_including_piece_returns_false_for_empty_grid(self):
         self.assertFalse(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,0))
@@ -338,6 +341,9 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 6, True)
 
         self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,6))
+
+    # Tests that AI recognizes rising diagonals. Starting with the ones
+    # beginning on row 5 (bottom row).
 
     def test_check_win_including_piece_returns_true_for_rising_diagonal_win(self):
         self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
