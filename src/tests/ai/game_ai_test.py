@@ -10,21 +10,278 @@ class TestGameAI(unittest.TestCase):
     def test_check_win_including_piece_returns_false_for_empty_grid(self):
         self.assertFalse(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,0))
 
+    # Tests for AI recognizing horizontal victories, starting on row 5 (bottom row)
+
     def test_check_win_including_piece_returns_true_for_horizontal_win(self):
         self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
         self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
         self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
         self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
 
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,0))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,2))
         self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,3))
 
     def test_check_win_including_piece_returns_true_for_horizontal_win_2(self):
-        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
-        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
-        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
-        self.game_ai.update_grid(self.game_ai.game_grid, 6, True)
+        self.game_ai.game_grid[5][1] = 1
+        self.game_ai.game_grid[5][2] = 1
+        self.game_ai.game_grid[5][3] = 1
+        self.game_ai.game_grid[5][4] = 1
 
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,4))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_3(self):
+        self.game_ai.game_grid[5][2] = 1
+        self.game_ai.game_grid[5][3] = 1
+        self.game_ai.game_grid[5][4] = 1
+        self.game_ai.game_grid[5][5] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,5))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_4(self):
+        self.game_ai.game_grid[5][3] = 1
+        self.game_ai.game_grid[5][4] = 1
+        self.game_ai.game_grid[5][5] = 1
+        self.game_ai.game_grid[5][6] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,5))
         self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,6))
+
+    # Horizontal victories on row 4
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_5(self):
+        self.game_ai.game_grid[4][0] = 1
+        self.game_ai.game_grid[4][1] = 1
+        self.game_ai.game_grid[4][2] = 1
+        self.game_ai.game_grid[4][3] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,0))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,3))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_6(self):
+        self.game_ai.game_grid[4][1] = 1
+        self.game_ai.game_grid[4][2] = 1
+        self.game_ai.game_grid[4][3] = 1
+        self.game_ai.game_grid[4][4] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,4))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_7(self):
+        self.game_ai.game_grid[4][2] = 1
+        self.game_ai.game_grid[4][3] = 1
+        self.game_ai.game_grid[4][4] = 1
+        self.game_ai.game_grid[4][5] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,5))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_8(self):
+        self.game_ai.game_grid[4][3] = 1
+        self.game_ai.game_grid[4][4] = 1
+        self.game_ai.game_grid[4][5] = 1
+        self.game_ai.game_grid[4][6] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,5))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,4,6))
+
+    # Horizontal victories on row 3
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_9(self):
+        self.game_ai.game_grid[3][0] = 1
+        self.game_ai.game_grid[3][1] = 1
+        self.game_ai.game_grid[3][2] = 1
+        self.game_ai.game_grid[3][3] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,0))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,3))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_10(self):
+        self.game_ai.game_grid[3][1] = 1
+        self.game_ai.game_grid[3][2] = 1
+        self.game_ai.game_grid[3][3] = 1
+        self.game_ai.game_grid[3][4] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,4))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_11(self):
+        self.game_ai.game_grid[3][2] = 1
+        self.game_ai.game_grid[3][3] = 1
+        self.game_ai.game_grid[3][4] = 1
+        self.game_ai.game_grid[3][5] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,5))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_12(self):
+        self.game_ai.game_grid[3][3] = 1
+        self.game_ai.game_grid[3][4] = 1
+        self.game_ai.game_grid[3][5] = 1
+        self.game_ai.game_grid[3][6] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,5))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,3,6))
+
+    # Horizontal victories on row 2
+    def test_check_win_including_piece_returns_true_for_horizontal_win_13(self):
+        self.game_ai.game_grid[2][0] = 1
+        self.game_ai.game_grid[2][1] = 1
+        self.game_ai.game_grid[2][2] = 1
+        self.game_ai.game_grid[2][3] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,0))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,3))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_14(self):
+        self.game_ai.game_grid[2][1] = 1
+        self.game_ai.game_grid[2][2] = 1
+        self.game_ai.game_grid[2][3] = 1
+        self.game_ai.game_grid[2][4] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,4))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_15(self):
+        self.game_ai.game_grid[2][2] = 1
+        self.game_ai.game_grid[2][3] = 1
+        self.game_ai.game_grid[2][4] = 1
+        self.game_ai.game_grid[2][5] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,5))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_16(self):
+        self.game_ai.game_grid[2][3] = 1
+        self.game_ai.game_grid[2][4] = 1
+        self.game_ai.game_grid[2][5] = 1
+        self.game_ai.game_grid[2][6] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,5))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,6))
+
+    # Horizontal victories on row 1
+    def test_check_win_including_piece_returns_true_for_horizontal_win_17(self):
+        self.game_ai.game_grid[1][0] = 1
+        self.game_ai.game_grid[1][1] = 1
+        self.game_ai.game_grid[1][2] = 1
+        self.game_ai.game_grid[1][3] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,0))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,3))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_18(self):
+        self.game_ai.game_grid[1][1] = 1
+        self.game_ai.game_grid[1][2] = 1
+        self.game_ai.game_grid[1][3] = 1
+        self.game_ai.game_grid[1][4] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,4))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_19(self):
+        self.game_ai.game_grid[1][2] = 1
+        self.game_ai.game_grid[1][3] = 1
+        self.game_ai.game_grid[1][4] = 1
+        self.game_ai.game_grid[1][5] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,5))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_20(self):
+        self.game_ai.game_grid[1][3] = 1
+        self.game_ai.game_grid[1][4] = 1
+        self.game_ai.game_grid[1][5] = 1
+        self.game_ai.game_grid[1][6] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,5))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,6))
+
+    # Horizontal victories on row 0 (top row)
+    def test_check_win_including_piece_returns_true_for_horizontal_win_21(self):
+        self.game_ai.game_grid[0][0] = 1
+        self.game_ai.game_grid[0][1] = 1
+        self.game_ai.game_grid[0][2] = 1
+        self.game_ai.game_grid[0][3] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,0))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,3))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_22(self):
+        self.game_ai.game_grid[0][1] = 1
+        self.game_ai.game_grid[0][2] = 1
+        self.game_ai.game_grid[0][3] = 1
+        self.game_ai.game_grid[0][4] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,1))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,4))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_23(self):
+        self.game_ai.game_grid[0][2] = 1
+        self.game_ai.game_grid[0][3] = 1
+        self.game_ai.game_grid[0][4] = 1
+        self.game_ai.game_grid[0][5] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,2))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,5))
+
+    def test_check_win_including_piece_returns_true_for_horizontal_win_24(self):
+        self.game_ai.game_grid[0][3] = 1
+        self.game_ai.game_grid[0][4] = 1
+        self.game_ai.game_grid[0][5] = 1
+        self.game_ai.game_grid[0][6] = 1
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,3))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,4))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,5))
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,6))
 
     def test_check_win_including_piece_returns_true_for_vertical_win_at_column_0(self):
         self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
