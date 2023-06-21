@@ -234,33 +234,33 @@ class TestGameAI(unittest.TestCase):
                 a piece on row 0, column 4 (top row, 5th tile).
         """
 
-        self.game_ai.game_grid[0][2] = 'X'
-        self.game_ai.game_grid[0][4] = 'O'
+        self.game_ai.game_grid[0][2] = 1
+        self.game_ai.game_grid[0][4] = 2
 
-        self.game_ai.game_grid[1][2] = 'O'
-        self.game_ai.game_grid[1][3] = 'O'
-        self.game_ai.game_grid[1][4] = 'X'
+        self.game_ai.game_grid[1][2] = 2
+        self.game_ai.game_grid[1][3] = 2
+        self.game_ai.game_grid[1][4] = 1
 
-        self.game_ai.game_grid[2][2] = 'O'
-        self.game_ai.game_grid[2][3] = 'O'
-        self.game_ai.game_grid[2][4] = 'X'
+        self.game_ai.game_grid[2][2] = 2
+        self.game_ai.game_grid[2][3] = 2
+        self.game_ai.game_grid[2][4] = 1
 
-        self.game_ai.game_grid[3][1] = 'X'
-        self.game_ai.game_grid[3][2] = 'O'
-        self.game_ai.game_grid[3][3] = 'X'
-        self.game_ai.game_grid[3][4] = 'X'
+        self.game_ai.game_grid[3][1] = 1
+        self.game_ai.game_grid[3][2] = 2
+        self.game_ai.game_grid[3][3] = 1
+        self.game_ai.game_grid[3][4] = 1
 
-        self.game_ai.game_grid[4][1] = 'X'
-        self.game_ai.game_grid[4][2] = 'X'
-        self.game_ai.game_grid[4][3] = 'O'
-        self.game_ai.game_grid[4][4] = 'O'
-        self.game_ai.game_grid[4][5] = 'X'
+        self.game_ai.game_grid[4][1] = 1
+        self.game_ai.game_grid[4][2] = 1
+        self.game_ai.game_grid[4][3] = 2
+        self.game_ai.game_grid[4][4] = 2
+        self.game_ai.game_grid[4][5] = 1
 
-        self.game_ai.game_grid[5][1] = 'O'
-        self.game_ai.game_grid[5][2] = 'O'
-        self.game_ai.game_grid[5][3] = 'X'
-        self.game_ai.game_grid[5][4] = 'X'
-        self.game_ai.game_grid[5][5] = 'O'
+        self.game_ai.game_grid[5][1] = 2
+        self.game_ai.game_grid[5][2] = 2
+        self.game_ai.game_grid[5][3] = 1
+        self.game_ai.game_grid[5][4] = 1
+        self.game_ai.game_grid[5][5] = 2
 
         self.assertFalse(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,4))
 

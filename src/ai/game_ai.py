@@ -31,7 +31,7 @@ class GameAI:
         The search order defines what order the computer will search for an
             optimal move, starting with the middle columns.
         """
-        self.game_grid = [['.' for _ in range(7)] for _ in range(6)]
+        self.game_grid = [[0 for _ in range(7)] for _ in range(6)]
         self.running = True
         self.search_order = [3, 2, 4, 1, 5, 0, 6]
         self.depth = depth
@@ -54,14 +54,14 @@ class GameAI:
         column = int(column)
 
         if player:
-            piece = "X"
+            piece = 1
         else:
-            piece = "O"
+            piece = 2
         piece_row = 0
         piece_column = 0
 
         for row in range(5, -1, -1):
-            if grid[row][column] == ".":
+            if grid[row][column] == 0:
                 grid[row][column] = piece
                 piece_row = row
                 piece_column = column
@@ -80,7 +80,7 @@ class GameAI:
 
         new_piece = grid[piece_row][piece_column]
 
-        if new_piece == ".":
+        if new_piece == 0:
             return False
 
         # Check vertical connections
@@ -125,7 +125,7 @@ class GameAI:
             column(int): The column number to drop the piece in.
         """
         column = random.randint(0, 6)
-        while self.game_grid[0][column] != ".":
+        while self.game_grid[0][column] != 0:
             column = random.randint(0, 6)
         return column
 
@@ -143,7 +143,7 @@ class GameAI:
         while elapsed_time < 1:
             for column in self.search_order:
                 fake_grid = copy.deepcopy(self.game_grid)
-                if fake_grid[0][column] == ".":
+                if fake_grid[0][column] == 0:
                     value = self.minimax(
                         self.update_grid(
                             fake_grid, column, False), self.depth + extra_depth, -10000, 10000, False, self.moves)
@@ -175,7 +175,7 @@ class GameAI:
         """
 
         if self.check_win_including_piece(game_state[0], game_state[1], game_state[2]):
-            if game_state[0][game_state[1]][game_state[2]] == "X":
+            if game_state[0][game_state[1]][game_state[2]] == 1:
                 return -10000
             return 10000
 
@@ -187,49 +187,49 @@ class GameAI:
         # Count vertical threats
         for row in range(1,3):
             for column in range(7):
-                if game_grid[row][column] == "X":
-                    if game_grid[row+1][column] == "X" and \
-                        game_grid[row+2][column] == "X":
+                if game_grid[row][column] == 1:
+                    if game_grid[row+1][column] == 1 and \
+                        game_grid[row+2][column] == 1:
                         player_threats += 1
-                if game_grid[row][column] == "O":
-                    if game_grid[row+1][column] == "O" and \
-                        game_grid[row+2][column] == "O":
+                if game_grid[row][column] == 2:
+                    if game_grid[row+1][column] == 2 and \
+                        game_grid[row+2][column] == 2:
                         ai_threats += 1
 
         # Count horizontal threats
         for row in range(6):
             for column in range(1,4):
-                if game_grid[row][column] == "X":
-                    if game_grid[row][column+1] == "X" and \
-                        game_grid[row][column+2] == "X":
+                if game_grid[row][column] == 1:
+                    if game_grid[row][column+1] == 1 and \
+                        game_grid[row][column+2] == 1:
                         player_threats += 1
-                if game_grid[row][column] == "O":
-                    if game_grid[row][column+1] == "O" and \
-                        game_grid[row][column+2] == "O":
+                if game_grid[row][column] == 2:
+                    if game_grid[row][column+1] == 2 and \
+                        game_grid[row][column+2] == 2:
                         ai_threats += 1
 
         # Count rising diagonal threats
         for row in range(1,3):
             for column in range(3,7):
-                if game_grid[row][column] == "X":
-                    if game_grid[row+1][column-1] == "X" and \
-                        game_grid[row+2][column-2] == "X":
+                if game_grid[row][column] == 1:
+                    if game_grid[row+1][column-1] == 1 and \
+                        game_grid[row+2][column-2] == 1:
                         player_threats += 1
-                if game_grid[row][column] == "O":
-                    if game_grid[row+1][column-1] == "O" and \
-                        game_grid[row+2][column-2] == "O":
+                if game_grid[row][column] == 2:
+                    if game_grid[row+1][column-1] == 2 and \
+                        game_grid[row+2][column-2] == 2:
                         ai_threats += 1
 
         # Count falling diagonal threats
         for row in range(1,3):
             for column in range(4):
-                if game_grid[row][column] == "X":
-                    if game_grid[row+1][column+1] == "X" and \
-                        game_grid[row+2][column+2] == "X":
+                if game_grid[row][column] == 1:
+                    if game_grid[row+1][column+1] == 1 and \
+                        game_grid[row+2][column+2] == 1:
                         player_threats += 1
-                if game_grid[row][column] == "O":
-                    if game_grid[row+1][column+1] == "O" and \
-                        game_grid[row+2][column+2] == "O":
+                if game_grid[row][column] == 2:
+                    if game_grid[row+1][column+1] == 2 and \
+                        game_grid[row+2][column+2] == 2:
                         ai_threats += 1
 
         score = ai_threats - player_threats
@@ -261,7 +261,7 @@ class GameAI:
         if moves == 42:
             return 0
         if self.check_win_including_piece(game_state[0], game_state[1], game_state[2]):
-            if game_state[0][game_state[1]][game_state[2]] == "O":
+            if game_state[0][game_state[1]][game_state[2]] == 2:
                 return 10000 + depth
             return -10000 - depth
         if maximizing_player:

@@ -10,12 +10,12 @@ class TestGameIntegration(unittest.TestCase):
         self.game_ui = GameUI(self.game_ai)
 
     def test_initial_grid_is_printed_correctly(self):
-        expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']\n"
+        expected_output = ("[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]\n"
         )
         output = StringIO()
         sys.stdout = output
@@ -24,12 +24,12 @@ class TestGameIntegration(unittest.TestCase):
         self.assertEqual(output.getvalue(), expected_output)
 
     def test_grid_is_printed_correctly_after_one_player_piece(self):
-        expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['X', '.', '.', '.', '.', '.', '.']\n"
+        expected_output = ("[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[1, 0, 0, 0, 0, 0, 0]\n"
         )
 
         self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
@@ -41,12 +41,12 @@ class TestGameIntegration(unittest.TestCase):
         self.assertEqual(output.getvalue(), expected_output)
 
     def test_grid_is_printed_correctly_after_two_player_pieces(self):
-        expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', 'X', '.', '.', '.']"
-            +"\n['.', '.', '.', 'X', '.', '.', '.']\n"
+        expected_output = ("[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 1, 0, 0, 0]"
+            +"\n[0, 0, 0, 1, 0, 0, 0]\n"
         )
 
         self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
@@ -59,12 +59,12 @@ class TestGameIntegration(unittest.TestCase):
         self.assertEqual(output.getvalue(), expected_output)
 
     def test_grid_is_printed_correctly_after_one_computer_piece(self):
-        expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', 'O', '.', '.', '.', '.', '.']\n"
+        expected_output = ("[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 2, 0, 0, 0, 0, 0]\n"
         )
 
         self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
@@ -76,12 +76,12 @@ class TestGameIntegration(unittest.TestCase):
         self.assertEqual(output.getvalue(), expected_output)
 
     def test_grid_is_printed_correctly_after_two_computer_pieces(self):
-        expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', 'O', '.', '.']"
-            +"\n['.', '.', '.', '.', 'O', '.', '.']\n"
+        expected_output = ("[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 2, 0, 0]"
+            +"\n[0, 0, 0, 0, 2, 0, 0]\n"
         )
 
         self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
@@ -94,12 +94,12 @@ class TestGameIntegration(unittest.TestCase):
         self.assertEqual(output.getvalue(), expected_output)
 
     def test_grid_is_printed_correctly_after_two_pieces_from_both_sides(self):
-        expected_output = ("['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', '.', '.', '.', '.']"
-            +"\n['.', '.', '.', 'O', '.', '.', '.']"
-            +"\n['.', '.', 'O', 'X', 'X', '.', '.']\n"
+        expected_output = ("[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 0, 0, 0, 0]"
+            +"\n[0, 0, 0, 2, 0, 0, 0]"
+            +"\n[0, 0, 2, 1, 1, 0, 0]\n"
         )
 
         self.game_ai.update_grid(self.game_ai.game_grid, 3, True)

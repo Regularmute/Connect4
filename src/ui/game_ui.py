@@ -15,7 +15,7 @@ class GameUI:
                 column = int(input("Enter a column number (1-7): ")) - 1
                 if column < 0 or column > 6:
                     raise ValueError
-                if self.game_service.game_grid[0][column] != ".":
+                if self.game_service.game_grid[0][column] != 0:
                     print("Column is full, please choose another.")
                     continue
                 return column
