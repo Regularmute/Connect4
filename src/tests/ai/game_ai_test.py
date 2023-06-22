@@ -1145,3 +1145,24 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, 0, False)
 
         self.assertEqual(self.game_ai.choose_column(), 0)
+
+    def test_minimax_recognizes_wins_two_moves_away_1(self):
+        self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 3, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
+        column = self.game_ai.choose_column()
+
+        self.assertEqual(column, 5)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
+        column = self.game_ai.choose_column()
+
+        self.assertEqual(column, 6)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,4))
