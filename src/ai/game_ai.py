@@ -146,7 +146,9 @@ class GameAI:
                 if fake_grid[0][column] == 0:
                     value = self.minimax(
                         self.update_grid(
-                            fake_grid, column, False), self.depth + extra_depth, -10000, 10000, False, self.moves)
+                            fake_grid, column, False),
+                            self.depth + extra_depth, -10000,
+                            10000, False, self.moves)
                     if not value:
                         value = 0
                     if value > best_value:
