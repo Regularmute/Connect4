@@ -1166,3 +1166,75 @@ class TestGameAI(unittest.TestCase):
         self.game_ai.update_grid(self.game_ai.game_grid, column, False)
 
         self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,4))
+
+    # Below scenario found at https://www.youtube.com/watch?v=74sc9MG369c
+    def test_minimax_recognizes_wins_five_moves_away_1(self):
+        # Initial game board
+        self.game_ai.game_grid[5][0] = 1
+        self.game_ai.game_grid[5][1] = 2
+        self.game_ai.game_grid[5][2] = 1
+        self.game_ai.game_grid[5][3] = 1
+        self.game_ai.game_grid[5][4] = 2
+
+        self.game_ai.game_grid[5][6] = 2
+
+        self.game_ai.game_grid[4][0] = 1
+        self.game_ai.game_grid[4][1] = 1
+        self.game_ai.game_grid[4][2] = 2
+        self.game_ai.game_grid[4][3] = 2
+        self.game_ai.game_grid[4][4] = 2
+
+        self.game_ai.game_grid[4][6] = 1
+
+        self.game_ai.game_grid[3][1] = 2
+        self.game_ai.game_grid[3][2] = 1
+        self.game_ai.game_grid[3][3] = 1
+        self.game_ai.game_grid[3][4] = 2
+
+        self.game_ai.game_grid[3][6] = 2
+
+        self.game_ai.game_grid[2][1] = 2
+        self.game_ai.game_grid[2][2] = 2
+        self.game_ai.game_grid[2][3] = 2
+        self.game_ai.game_grid[2][4] = 1
+
+        self.game_ai.game_grid[2][6] = 1
+
+        self.game_ai.game_grid[1][2] = 1
+        self.game_ai.game_grid[1][3] = 2
+
+        self.game_ai.game_grid[0][2] = 1
+        self.game_ai.game_grid[0][3] = 1
+
+        print(self.game_ai.game_grid)
+
+        # Test moves
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 6)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 5)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 5)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 5)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 4)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid, 0, 4))
