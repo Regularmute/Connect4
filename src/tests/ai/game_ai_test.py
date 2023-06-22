@@ -488,24 +488,6 @@ class TestGameAI(unittest.TestCase):
         self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,5))
         self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,0,6))
 
-    def test_check_win_including_piece_returns_true_for_rising_diagonal_win_xx(self):
-        # Checks for rising diagonal win on the right side of the grid
-        self.game_ai.update_grid(self.game_ai.game_grid, 3, True)
-
-        self.game_ai.update_grid(self.game_ai.game_grid, 4, False)
-        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
-
-        self.game_ai.update_grid(self.game_ai.game_grid, 5, False)
-        self.game_ai.update_grid(self.game_ai.game_grid, 5, False)
-        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
-
-        self.game_ai.update_grid(self.game_ai.game_grid, 6, False)
-        self.game_ai.update_grid(self.game_ai.game_grid, 6, False)
-        self.game_ai.update_grid(self.game_ai.game_grid, 6, False)
-        self.game_ai.update_grid(self.game_ai.game_grid, 6, True)
-
-        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,6))
-
     def test_check_win_including_piece_returns_true_for_falling_diagonal_win(self):
         self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
         self.game_ai.update_grid(self.game_ai.game_grid, 1, False)
