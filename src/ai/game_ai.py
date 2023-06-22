@@ -11,7 +11,7 @@ class GameAI:
                 the board state of the game.
             running(bool): True if the game is running,
                 False if the game is over.
-            search_order(list): The order in which minimax searches for the
+            search_order(list): The reversed order in which minimax searches for the
                 best move.
             depth(int): The depth of the minimax algorithm.
             moves(int): The number of moves performed in the game. Used to
@@ -33,7 +33,7 @@ class GameAI:
         """
         self.game_grid = [[0 for _ in range(7)] for _ in range(6)]
         self.running = True
-        self.search_order = [3, 2, 4, 1, 5, 0, 6]
+        self.search_order = [6, 0, 5, 1, 4, 2, 3]
         self.depth = depth
         self.moves = 0
 
@@ -136,12 +136,12 @@ class GameAI:
             column(int): The column number to drop the piece in.
         """
         best_value = -10000
-        best_column = 0
+        best_column = 4
         extra_depth = 0
         start_time = timeit.default_timer()
         elapsed_time = 0
         while elapsed_time < 1:
-            for column in self.search_order:
+            for column in reversed(self.search_order):
                 fake_grid = copy.deepcopy(self.game_grid)
                 if fake_grid[0][column] == 0:
                     value = self.minimax(
@@ -157,6 +157,8 @@ class GameAI:
             extra_depth += 1
             print("elapsed_time: ", elapsed_time)
             elapsed_time = timeit.default_timer() - start_time
+            self.search_order.remove(best_column)
+            self.search_order.append(best_column)
         print("Computer chose column ", str(best_column + 1))
         print("Time elapsed: ", str(elapsed_time))
         print("Depth reached: ", self.depth + extra_depth)
@@ -268,7 +270,7 @@ class GameAI:
             return -10000 - depth
         if maximizing_player:
             value = -10000
-            for column in self.search_order:
+            for column in reversed(self.search_order):
                 fake_grid = copy.deepcopy(game_state[0])
                 value = max(value, self.minimax(
                     self.update_grid(fake_grid, column, False),
@@ -278,7 +280,7 @@ class GameAI:
                     break
             return value
         value = 10000
-        for column in self.search_order:
+        for column in reversed(self.search_order):
             fake_grid = copy.deepcopy(game_state[0])
             value = min(value, self.minimax(
                 self.update_grid(
