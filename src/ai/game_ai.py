@@ -33,7 +33,6 @@ class GameAI:
         """
         self.game_grid = [[0 for _ in range(7)] for _ in range(6)]
         self.running = True
-        self.search_order = [6, 0, 5, 1, 4, 2, 3]
         self.depth = depth
         self.moves = 0
 
@@ -135,6 +134,7 @@ class GameAI:
         Returns:
             column(int): The column number to drop the piece in.
         """
+        self.search_order = [6, 0, 5, 1, 4, 2, 3]
         best_value = -10000
         best_column = 4
         extra_depth = 0
