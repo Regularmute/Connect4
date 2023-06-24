@@ -283,9 +283,8 @@ class GameAI:
         for column in reversed(self.search_order):
             fake_grid = copy.deepcopy(game_state[0])
             value = min(value, self.minimax(
-                self.update_grid(
-                    fake_grid, column, True), depth-1, alpha, beta, True, moves+1)
-                )
+                self.update_grid(fake_grid, column, True),
+                    depth-1, alpha, beta, True, moves+1))
             beta = min(beta, value)
             if value <= alpha:
                 break
