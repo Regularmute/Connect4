@@ -17,6 +17,7 @@ The test branch coverage report can be seen in the testing document: [Testing Do
     * [Week 3](https://github.com/Regularmute/Connect4/blob/main/documentation/weekreports/weekreport3.md)
     * [Week 4](https://github.com/Regularmute/Connect4/blob/main/documentation/weekreports/weekreport4.md)
     * [Week 5](https://github.com/Regularmute/Connect4/blob/main/documentation/weekreports/weekreport5.md)
+    * [Week 6](https://github.com/Regularmute/Connect4/blob/main/documentation/weekreports/weekreport6.md)
 
 ## Installation instructions
 
