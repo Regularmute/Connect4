@@ -134,31 +134,32 @@ class GameAI:
         Returns:
             column(int): The column number to drop the piece in.
         """
-        self.search_order = [6, 0, 5, 1, 4, 2, 3]
-        best_value = -10000
+        transposition_table = {}
+        search_order = [6, 0, 5, 1, 4, 2, 3]
+        best_value = -20000
+        alpha = -20000
         best_column = 4
         extra_depth = 0
         start_time = timeit.default_timer()
         elapsed_time = 0
         while elapsed_time < 1:
-            for column in reversed(self.search_order):
+            for column in reversed(search_order):
                 fake_grid = copy.deepcopy(self.game_grid)
                 if fake_grid[0][column] == 0:
                     value = self.minimax(
                         self.update_grid(
                             fake_grid, column, False),
-                            self.depth + extra_depth, -10000,
-                            10000, False, self.moves)
-                    if not value:
-                        value = 0
+                            self.depth + extra_depth, alpha,
+                            20000, False, self.moves, transposition_table, 0)
                     if value > best_value:
                         best_value = value
                         best_column = column
+                        alpha = value
             extra_depth += 1
             print("elapsed_time: ", elapsed_time)
             elapsed_time = timeit.default_timer() - start_time
-            self.search_order.remove(best_column)
-            self.search_order.append(best_column)
+            search_order.remove(best_column)
+            search_order.append(best_column)
         print("Computer chose column ", str(best_column + 1))
         print("Time elapsed: ", str(elapsed_time))
         print("Depth reached: ", self.depth + extra_depth)
@@ -241,7 +242,7 @@ class GameAI:
         return score
 
 
-    def minimax(self, game_state, depth, alpha, beta, maximizing_player, moves):
+    def minimax(self, game_state, depth, alpha, beta, maximizing_player, moves, t_table, t_key):
         """Returns the optimal column for a dropped piece in a game state.
 
         Args:
@@ -268,24 +269,50 @@ class GameAI:
             if game_state[0][game_state[1]][game_state[2]] == 2:
                 return 10000 + depth
             return -10000 - depth
+        minimax_search_order = [6,0,5,1,4,2,3]
+        # calculate key for transposition table
+        t_key = t_key * 8 + game_state[2] + 1
+        previous_best_move = t_table.get(t_key)
+        # check if the game state is in the transposition table, if so push
+        # the best move to the end of the (reversed) search order.
+        if previous_best_move:
+            minimax_search_order.remove(previous_best_move)
+            minimax_search_order.append(previous_best_move)
+        best_column = None
         if maximizing_player:
-            value = -10000
-            for column in reversed(self.search_order):
+            value = -20000
+            best_value = -20000
+            for column in reversed(minimax_search_order):
                 fake_grid = copy.deepcopy(game_state[0])
                 value = max(value, self.minimax(
                     self.update_grid(fake_grid, column, False),
-                    depth-1, alpha, beta, False, moves+1))
-                alpha = max(alpha, value)
+                    depth-1, alpha, beta, False, moves+1, t_table, t_key))
+                if value > best_value:
+                    best_value = value
+                    best_column = column
+                    alpha = max(value, alpha)
                 if value >= beta:
                     break
+            # Store the best move for this game state in the
+            # transposition table.
+            t_table[t_key] = best_column
             return value
-        value = 10000
-        for column in reversed(self.search_order):
+        # If minimizing player
+        value = 20000
+        best_value = 20000
+        for column in reversed(minimax_search_order):
             fake_grid = copy.deepcopy(game_state[0])
+            t_key = t_key * 8 + column + 1
             value = min(value, self.minimax(
                 self.update_grid(fake_grid, column, True),
-                    depth-1, alpha, beta, True, moves+1))
-            beta = min(beta, value)
+                    depth-1, alpha, beta, True, moves+1, t_table, t_key))
+            if value < best_value:
+                best_value = value
+                best_column = column
+                beta = min(value, beta)
             if value <= alpha:
                 break
+        # Store the best move for this game state in the
+        # transposition table.
+        t_table[t_key] = best_column
         return value
