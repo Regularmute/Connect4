@@ -1,6 +1,5 @@
 """Handles the game logic and AI."""
 
-import random
 import copy
 import timeit
 
