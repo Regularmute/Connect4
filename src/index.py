@@ -1,7 +1,11 @@
 """Module that runs the game loop.
 
-The depth of the minimax algorithm can be adjusted by inserting the desired
-depth as a parameter of GameAI(). The default depth is 4.
+While the ai-module is running a game, the while_loop is repeated. If either
+player wins or if 42 moves have been made without a victory (resulting in a
+draw), the game ends and the final game board is printed.
+
+The initial depth of the minimax algorithm can be adjusted by inserting the desired
+depth as a parameter of GameAI(). The default value is 4.
 """
 
 from ai.game_ai import GameAI
