@@ -117,17 +117,6 @@ class GameAI:
                     return True
         return False
 
-    def choose_column_random(self):
-        """Chooses a random column to drop a piece in.
-
-        Returns:
-            column(int): The column number to drop the piece in.
-        """
-        column = random.randint(0, 6)
-        while self.game_grid[0][column] != 0:
-            column = random.randint(0, 6)
-        return column
-
     def choose_column(self):
         """Chooses a column to drop a piece in using the minimax algorithm.
 
