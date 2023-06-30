@@ -5,10 +5,11 @@ class TestGameAI(unittest.TestCase):
     def setUp(self):
         self.game_ai = GameAI()
 
-    # Tests for the AI recognizing whether or not someone has won in a game board.
     # Some tests have been made through "accurate moves" with the actual board
     #   updating function, and many have been by directly placing the tiles on
     #   the board.
+
+    # Tests for the AI recognizing whether or not someone has won in a game board.
 
     def test_check_win_including_piece_returns_false_for_empty_grid(self):
         self.assertFalse(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,0))
