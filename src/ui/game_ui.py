@@ -1,6 +1,10 @@
 class GameUI:
     """User interface for the game."""
     def __init__(self, game_ai):
+        """
+        args: game_ai(GameAI): The game module in charge of tracking game state
+            and running the minimax algorithm for optimal computer moves.
+        """
         self.game_ai = game_ai
 
     def print_grid(self):
@@ -9,7 +13,14 @@ class GameUI:
             print(row)
 
     def get_column_from_player(self):
-        """Gets the column number from the player."""
+        """Gets the column number from the player.
+
+        Handles invalid inputs such as non-integers, non-existing columns or
+        columns without free spaces.
+
+        Returns:
+            column(int): The index of the column where the player drops a piece.
+        """
         while True:
             try:
                 column = int(input("Enter a column number (1-7): ")) - 1
