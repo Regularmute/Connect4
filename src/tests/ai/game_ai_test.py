@@ -1167,56 +1167,152 @@ class TestGameAI(unittest.TestCase):
 
         self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,4))
 
-    # Below scenario found at https://www.youtube.com/watch?v=74sc9MG369c
-    def test_minimax_recognizes_wins_five_moves_away_1(self):
+    def test_minimax_recognizes_wins_three_moves_away_1(self):
+        # Scenario inspired by https://www.youtube.com/watch?v=jJSbZ6OVpgg
+        # Minimax chooses an alternative but just as fast route to victory,
+        # columns 2, 2 then 6.
         # Initial game board
-        self.game_ai.game_grid[5][0] = 1
-        self.game_ai.game_grid[5][1] = 2
-        self.game_ai.game_grid[5][2] = 1
-        self.game_ai.game_grid[5][3] = 1
-        self.game_ai.game_grid[5][4] = 2
 
-        self.game_ai.game_grid[5][6] = 2
+        self.game_ai.game_grid[5][0] = 1
+        self.game_ai.game_grid[5][1] = 1
+        self.game_ai.game_grid[5][2] = 1
+        self.game_ai.game_grid[5][3] = 2
+        self.game_ai.game_grid[5][4] = 2
+        self.game_ai.game_grid[5][5] = 2
+        self.game_ai.game_grid[5][6] = 1
 
         self.game_ai.game_grid[4][0] = 1
-        self.game_ai.game_grid[4][1] = 1
-        self.game_ai.game_grid[4][2] = 2
+        self.game_ai.game_grid[4][2] = 1
         self.game_ai.game_grid[4][3] = 2
         self.game_ai.game_grid[4][4] = 2
-
+        self.game_ai.game_grid[4][5] = 2
         self.game_ai.game_grid[4][6] = 1
 
-        self.game_ai.game_grid[3][1] = 2
-        self.game_ai.game_grid[3][2] = 1
-        self.game_ai.game_grid[3][3] = 1
-        self.game_ai.game_grid[3][4] = 2
+        self.game_ai.game_grid[3][3] = 2
+        self.game_ai.game_grid[3][4] = 1
+        self.game_ai.game_grid[3][5] = 2
 
-        self.game_ai.game_grid[3][6] = 2
+        self.game_ai.game_grid[2][3] = 1
+        self.game_ai.game_grid[2][4] = 2
+        self.game_ai.game_grid[2][5] = 1
 
-        self.game_ai.game_grid[2][1] = 2
-        self.game_ai.game_grid[2][2] = 2
-        self.game_ai.game_grid[2][3] = 2
-        self.game_ai.game_grid[2][4] = 1
-
-        self.game_ai.game_grid[2][6] = 1
-
-        self.game_ai.game_grid[1][2] = 1
         self.game_ai.game_grid[1][3] = 2
+        self.game_ai.game_grid[1][4] = 2
 
-        self.game_ai.game_grid[0][2] = 1
         self.game_ai.game_grid[0][3] = 1
 
-        print(self.game_ai.game_grid)
+        # test moves
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 2)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 2)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 5)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid,1,5))
+
+    def test_minimax_recognizes_wins_five_moves_away_1(self):
+        # Scenario found at https://www.youtube.com/watch?v=RoQV1DNIfe0
+        # Initial game board (computer is red)
+        self.game_ai.game_grid[5][0] = 1
+
+        self.game_ai.game_grid[5][2] = 1
+        self.game_ai.game_grid[5][3] = 2
+        self.game_ai.game_grid[5][4] = 2
+        self.game_ai.game_grid[5][5] = 2
+        self.game_ai.game_grid[5][6] = 1
+
+        self.game_ai.game_grid[4][2] = 1
+        self.game_ai.game_grid[4][3] = 2
+        self.game_ai.game_grid[4][4] = 1
+        self.game_ai.game_grid[4][5] = 1
+
+        self.game_ai.game_grid[3][2] = 2
+        self.game_ai.game_grid[3][3] = 2
+
+        self.game_ai.game_grid[2][2] = 2
+        self.game_ai.game_grid[2][3] = 1
 
         # Test moves
         column = self.game_ai.choose_column()
-        self.assertEqual(column, 6)
+        self.assertEqual(column, 4)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 1)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 5)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 1)
         self.game_ai.update_grid(self.game_ai.game_grid, column, False)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 1, True)
 
         column = self.game_ai.choose_column()
-        self.assertEqual(column, 5)
+        self.assertEqual(column, 1)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.check_win_including_piece(self.game_ai.game_grid,2,1)
+
+    def test_minimax_recognizes_wins_five_moves_away_2(self):
+        # Scenario found at https://www.youtube.com/watch?v=5nAAXCr08t0
+        # Initial game board (computer is red)
+
+        self.game_ai.game_grid[5][1] = 1
+        self.game_ai.game_grid[5][2] = 1
+        self.game_ai.game_grid[5][3] = 1
+        self.game_ai.game_grid[5][4] = 2
+
+        self.game_ai.game_grid[4][1] = 1
+        self.game_ai.game_grid[4][3] = 1
+        self.game_ai.game_grid[4][4] = 2
+
+        self.game_ai.game_grid[3][1] = 2
+        self.game_ai.game_grid[3][3] = 2
+        self.game_ai.game_grid[3][4] = 2
+
+        self.game_ai.game_grid[2][3] = 2
+        self.game_ai.game_grid[2][4] = 1
+
+        self.game_ai.game_grid[1][3] = 2
+
+        self.game_ai.game_grid[0][3] = 1
+
+        # Test moves
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 0)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 0, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 2)
+        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
+
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
+
+        column = self.game_ai.choose_column()
+        self.assertEqual(column, 2)
         self.game_ai.update_grid(self.game_ai.game_grid, column, False)
 
         self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
@@ -1225,16 +1321,10 @@ class TestGameAI(unittest.TestCase):
         self.assertEqual(column, 5)
         self.game_ai.update_grid(self.game_ai.game_grid, column, False)
 
-        self.game_ai.update_grid(self.game_ai.game_grid, 5, True)
+        self.game_ai.update_grid(self.game_ai.game_grid, 2, True)
 
         column = self.game_ai.choose_column()
-        self.assertEqual(column, 5)
+        self.assertEqual(column, 6)
         self.game_ai.update_grid(self.game_ai.game_grid, column, False)
 
-        self.game_ai.update_grid(self.game_ai.game_grid, 4, True)
-
-        column = self.game_ai.choose_column()
-        self.assertEqual(column, 4)
-        self.game_ai.update_grid(self.game_ai.game_grid, column, False)
-
-        self.assertTrue(self.game_ai.check_win_including_piece(self.game_ai.game_grid, 0, 4))
+        self.game_ai.check_win_including_piece(self.game_ai.game_grid,5,6)
