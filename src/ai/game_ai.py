@@ -10,8 +10,6 @@ class GameAI:
                 the board state of the game.
             running(bool): True if the game is running,
                 False if the game is over.
-            search_order(list): The reversed order in which minimax searches for the
-                best move.
             depth(int): The depth of the minimax algorithm.
             moves(int): The number of moves performed in the game. Used to
                 recognise tied games.
@@ -70,6 +68,7 @@ class GameAI:
         """Checks if the game has been won with a piece.
 
         Args:
+            piece_row(int): The row number of the last piece dropped.
             piece_column(int): The column number of the last piece dropped.
 
         Returns:
@@ -244,6 +243,10 @@ class GameAI:
                 False if next move is by the minimizer.
             moves(int): The amount of moves made in the hypothetical game
                 state. Recognizes a draw at 42 moves.
+            t_table(dictionary): Transposition table containing the best moves
+                for various board states. The keys represent the board states
+                and their values contain the best move in the state.
+            t_key(int): A unique integer identifying each board state.
 
         Returns:
             value(int): The heuristical numerical value of the game state.
