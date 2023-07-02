@@ -44,6 +44,7 @@ The user experience could also be improved in a number of ways:
 
 * The user interface could be made more legible, for example by swapping the numbers on the board into characters like 'X' and 'O'.
 * The player could be provided with multiple difficulty options, such as by limiting the maximum depth of the minimax function.
+* Tests could be added for depths higher than 5, but I struggled finding guaranteed win sequences for such depth. I could have manually experimented to discover such scenarios, but ran out of time.
 
 ## Sources
 * Course material for minimax: https://tiralabra.github.io/2023_alkukesa/fi/aiheet/minimax.pdf
